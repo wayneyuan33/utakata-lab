@@ -1,0 +1,1721 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Primary Meta -->
+  <title data-en-title="UTAKATA — AI Digital Marketing Lab" data-jp-title="ウタカタ — AIデジタルマーケティングラボ">UTAKATA — AI Digital Marketing Lab</title>
+  <meta name="description" content="UTAKATA is an AI digital marketing lab. Content that reads well — for humans, and for AI. LLMO strategy, interactive content, and multilingual web design.">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="UTAKATA — AI Digital Marketing Lab">
+  <meta property="og:description" content="Content that reads well. For humans, and for AI.">
+  <meta property="og:image:alt" content="UTAKATA ウタカタ — AI Digital Marketing Lab">
+
+  <!-- Fonts: preconnect for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Space+Grotesk:wght@400;600&family=Inter:wght@400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@400&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==============================================
+       1. RESET / BASE
+       ============================================== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      /* COLORS — "Long Light" palette */
+      --color-deep:           #1B1F1E;
+      --color-dark:           #4A524A;
+      --color-mid:            #7D8278;
+      --color-light:          #D8D6CE;
+      --color-bg:             #F2EEE6;
+
+      --color-surface:        #F2EEE6;
+      --color-surface-dark:   #4A524A;
+
+      --color-text-primary:   #1B1F1E;
+      --color-text-on-dark:   #F2EEE6;
+      --color-text-secondary: #4A524A;
+      --color-text-tertiary:  #7D8278;
+
+      --color-accent:         #C47A3A;
+      --color-accent-hover:   #A8612A;
+      --color-accent-light:   #E7C5B6;
+
+      --color-border:         #D8D6CE;
+      --color-overlay:        rgba(27,31,30,0.55);
+
+      /* TYPOGRAPHY */
+      --font-display:  'DM Serif Display', 'Noto Serif JP', Georgia, serif;
+      --font-heading:  'Space Grotesk', 'Noto Sans JP', system-ui, sans-serif;
+      --font-body:     'Inter', 'Noto Sans JP', system-ui, sans-serif;
+      --font-mono:     'JetBrains Mono', 'Courier New', monospace;
+
+      --text-xs:         0.75rem;
+      --text-sm:         0.875rem;
+      --text-base:       1rem;
+      --text-lg:         1.125rem;
+      --text-xl:         1.25rem;
+      --text-2xl:        1.5rem;
+      --text-3xl:        1.875rem;
+      --text-4xl:        2.25rem;
+      --text-display:    3.5rem;
+      --text-display-sm: 2.5rem;
+
+      /* SPACING */
+      --space-1:  4px;
+      --space-2:  8px;
+      --space-3:  12px;
+      --space-4:  16px;
+      --space-6:  24px;
+      --space-8:  32px;
+      --space-12: 48px;
+      --space-16: 64px;
+      --space-24: 96px;
+      --space-32: 128px;
+
+      /* LAYOUT */
+      --max-width:   1200px;
+      --radius-sm:   4px;
+      --radius-md:   8px;
+      --radius-lg:   16px;
+      --radius-pill: 999px;
+
+      /* TRANSITIONS */
+      --transition-fast: 150ms ease;
+      --transition-base: 250ms ease;
+      --transition-slow: 300ms ease-in-out;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      line-height: 1.7;
+      color: var(--color-text-primary);
+      background-color: var(--color-bg);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font-family: inherit;
+    }
+
+    /* ==============================================
+       2. TYPOGRAPHY
+       ============================================== */
+    h1, h2, h3, h4 {
+      font-family: var(--font-heading);
+      font-weight: 600;
+      line-height: 1.2;
+      color: var(--color-text-primary);
+    }
+
+    /* ==============================================
+       3. LAYOUT UTILITIES
+       ============================================== */
+    .container {
+      width: 100%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 5vw;
+    }
+
+    @media (min-width: 1280px) {
+      .container {
+        padding: 0 var(--space-8);
+      }
+    }
+
+    .section {
+      padding: var(--space-12) 0;
+    }
+
+    @media (min-width: 1024px) {
+      .section {
+        padding: var(--space-16) 0;
+      }
+    }
+
+    .section__label {
+      font-family: var(--font-heading);
+      font-size: var(--text-xs);
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-text-tertiary);
+      margin-bottom: var(--space-2);
+    }
+
+    .section__heading {
+      font-family: var(--font-heading);
+      font-size: var(--text-2xl);
+      font-weight: 600;
+      color: var(--color-text-primary);
+      margin-bottom: var(--space-4);
+    }
+
+    .section__intro {
+      font-family: var(--font-body);
+      font-size: var(--text-lg);
+      color: var(--color-text-secondary);
+      margin-bottom: var(--space-8);
+      max-width: 560px;
+    }
+
+    /* ==============================================
+       4. HEADER + NAV
+       ============================================== */
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      height: 60px;
+      background: transparent;
+      transition: background var(--transition-base), box-shadow var(--transition-base);
+    }
+
+    .site-header.is-scrolled {
+      background: var(--color-bg);
+      box-shadow: 0 1px 0 var(--color-border);
+    }
+
+    .site-header .container {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-6);
+    }
+
+    .logo {
+      font-family: var(--font-heading);
+      font-size: var(--text-sm);
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--color-text-primary);
+      display: flex;
+      align-items: baseline;
+      gap: var(--space-2);
+      flex-shrink: 0;
+    }
+
+    .logo-jp {
+      font-family: var(--font-body);
+      font-weight: 400;
+      font-size: var(--text-xs);
+      color: var(--color-text-tertiary);
+    }
+
+    .site-nav {
+      display: none;
+      gap: var(--space-8);
+    }
+
+    @media (min-width: 768px) {
+      .site-nav {
+        display: flex;
+        align-items: center;
+      }
+    }
+
+    .site-nav a {
+      font-family: var(--font-heading);
+      font-size: var(--text-sm);
+      font-weight: 400;
+      color: var(--color-text-secondary);
+      transition: color var(--transition-fast);
+    }
+
+    .site-nav a:hover {
+      color: var(--color-accent);
+    }
+
+    /* ==============================================
+       5. LANGUAGE TOGGLE
+       ============================================== */
+    .lang-toggle {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      background: none;
+      border: 1.5px solid var(--color-border);
+      border-radius: var(--radius-pill);
+      padding: 4px 10px;
+      cursor: pointer;
+      transition: border-color var(--transition-fast);
+      flex-shrink: 0;
+    }
+
+    .lang-toggle:hover {
+      border-color: var(--color-accent);
+    }
+
+    .lang-option {
+      font-family: var(--font-heading);
+      font-size: var(--text-xs);
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--color-text-tertiary);
+      transition: color var(--transition-fast);
+      padding: 0 4px;
+    }
+
+    .lang-option.active {
+      color: var(--color-text-primary);
+    }
+
+    .lang-separator {
+      font-size: var(--text-xs);
+      color: var(--color-border);
+      padding: 0 2px;
+    }
+
+    /* Language visibility rules */
+    [data-lang="en"] [data-jp]   { display: none !important; }
+    [data-lang="en"] [data-en]   { display: revert; }
+    [data-lang="jp"] [data-en]   { display: none !important; }
+    [data-lang="jp"] [data-jp]   { display: revert; }
+
+    /* Block-level bilingual elements */
+    [data-lang="en"] p[data-jp],
+    [data-lang="en"] div[data-jp],
+    [data-lang="en"] h1[data-jp],
+    [data-lang="en"] h2[data-jp],
+    [data-lang="en"] h3[data-jp] { display: none !important; }
+
+    [data-lang="jp"] p[data-en],
+    [data-lang="jp"] div[data-en],
+    [data-lang="jp"] h1[data-en],
+    [data-lang="jp"] h2[data-en],
+    [data-lang="jp"] h3[data-en] { display: none !important; }
+
+    /* ==============================================
+       6. HERO
+       ============================================== */
+    .section--hero {
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      padding-top: 60px; /* header height */
+    }
+
+    .hero__inner {
+      padding: var(--space-24) 0 var(--space-16);
+    }
+
+    .hero__studio-name {
+      font-family: var(--font-display);
+      font-size: var(--text-display-sm);
+      font-weight: 400;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      color: var(--color-text-primary);
+      margin-bottom: var(--space-4);
+    }
+
+    @media (min-width: 768px) {
+      .hero__studio-name {
+        font-size: var(--text-display);
+      }
+    }
+
+    .hero__tagline {
+      font-family: var(--font-heading);
+      font-size: var(--text-lg);
+      font-weight: 400;
+      color: var(--color-text-tertiary);
+      letter-spacing: 0.02em;
+      margin-bottom: var(--space-8);
+    }
+
+    @media (min-width: 768px) {
+      .hero__tagline {
+        font-size: var(--text-xl);
+      }
+    }
+
+    .hero__statement {
+      font-family: var(--font-display);
+      font-size: var(--text-4xl);
+      font-weight: 400;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      color: var(--color-text-primary);
+      max-width: 640px;
+      margin-bottom: var(--space-12);
+    }
+
+    @media (min-width: 768px) {
+      .hero__statement {
+        font-size: clamp(2.25rem, 4vw, 3rem);
+      }
+    }
+
+    .hero__scroll {
+      position: absolute;
+      bottom: var(--space-8);
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-2);
+      color: var(--color-text-tertiary);
+    }
+
+    .hero__scroll-line {
+      width: 1px;
+      height: 32px;
+      background: var(--color-border);
+    }
+
+    .hero__scroll-label {
+      font-family: var(--font-heading);
+      font-size: var(--text-xs);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .section--hero {
+      position: relative;
+    }
+
+    /* ==============================================
+       7. BUTTONS
+       ============================================== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      height: 48px;
+      padding: 12px 28px;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-heading);
+      font-size: var(--text-sm);
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      cursor: pointer;
+      border: none;
+      text-decoration: none;
+      transition: background var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+    }
+
+    .btn--primary {
+      background: var(--color-accent);
+      color: var(--color-bg);
+    }
+
+    .btn--primary:hover {
+      background: var(--color-accent-hover);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(196,122,58,0.25);
+    }
+
+    .btn--primary:focus-visible {
+      outline: 2px solid var(--color-accent);
+      outline-offset: 3px;
+    }
+
+    .btn--secondary {
+      background: transparent;
+      color: var(--color-accent);
+      border: 1.5px solid var(--color-accent);
+    }
+
+    .btn--secondary:hover {
+      background: rgba(196,122,58,0.06);
+    }
+
+    /* ==============================================
+       8. TAGS
+       ============================================== */
+    .tag {
+      display: inline-block;
+      font-family: var(--font-heading);
+      font-size: var(--text-xs);
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--color-border);
+      color: var(--color-text-secondary);
+      line-height: 1.5;
+    }
+
+    /* ==============================================
+       9. PORTFOLIO SECTION
+       ============================================== */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-6);
+    }
+
+    @media (min-width: 768px) {
+      .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-8);
+      }
+    }
+
+    /* Portfolio Card */
+    .card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      cursor: pointer;
+      transform: translateY(0);
+      box-shadow: 0 2px 8px rgba(27,31,30,0.06);
+      transition: transform var(--transition-base), box-shadow var(--transition-base);
+    }
+
+    @media (hover: hover) {
+      .card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 32px rgba(27,31,30,0.12);
+      }
+
+      .card:hover .card__expand {
+        max-height: 320px;
+        opacity: 1;
+      }
+    }
+
+    .card.is-expanded {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(27,31,30,0.12);
+    }
+
+    .card.is-expanded .card__expand {
+      max-height: 320px;
+      opacity: 1;
+    }
+
+    .card__image {
+      height: 200px;
+      overflow: hidden;
+      background: var(--color-accent-light);
+    }
+
+    .card__image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* ---- Carousel / Slider ---- */
+    .card__slider {
+      position: relative;
+      height: 200px;
+      overflow: hidden;
+      background: var(--color-accent-light);
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    .card__slider-track {
+      display: flex;
+      height: 100%;
+      transition: transform 0.35s ease;
+      will-change: transform;
+    }
+
+    .card__slider-track img {
+      flex: 0 0 100%;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      -webkit-user-drag: none;
+      cursor: zoom-in;
+    }
+
+    .slider-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(242,238,230,0.88);
+      color: var(--color-text-primary);
+      font-size: 20px;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 2;
+      opacity: 0;
+      transition: opacity var(--transition-fast), background var(--transition-fast);
+      padding: 0;
+    }
+
+    .card__slider:hover .slider-btn {
+      opacity: 1;
+    }
+
+    .slider-btn:hover {
+      background: var(--color-bg);
+    }
+
+    /* On touch devices: always show buttons at reduced opacity */
+    @media (hover: none) {
+      .slider-btn {
+        opacity: 0.75;
+        width: 28px;
+        height: 28px;
+        font-size: 16px;
+      }
+    }
+
+    .slider-btn--prev { left: 8px; }
+    .slider-btn--next { right: 8px; }
+
+    .slider-dots {
+      position: absolute;
+      bottom: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 5px;
+      z-index: 2;
+    }
+
+    .slider-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: rgba(242,238,230,0.4);
+      transition: background var(--transition-fast), transform var(--transition-fast);
+    }
+
+    .slider-dot.is-active {
+      background: rgba(242,238,230,0.95);
+      transform: scale(1.4);
+    }
+
+    .card__body {
+      padding: var(--space-6);
+    }
+
+    .card__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: var(--space-4);
+      margin-bottom: var(--space-3);
+    }
+
+    .card__title {
+      font-family: var(--font-heading);
+      font-size: var(--text-xl);
+      font-weight: 600;
+      line-height: 1.25;
+      color: var(--color-text-primary);
+    }
+
+    .card__tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-1);
+      flex-shrink: 0;
+    }
+
+    .card__desc--short {
+      font-size: var(--text-base);
+      color: var(--color-text-secondary);
+      line-height: 1.6;
+    }
+
+    .card__expand {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height var(--transition-slow), opacity var(--transition-slow);
+    }
+
+    .card__desc--long {
+      font-size: var(--text-base);
+      color: var(--color-text-secondary);
+      line-height: 1.7;
+      padding-top: var(--space-4);
+    }
+
+    .card__link {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-1);
+      margin-top: var(--space-4);
+      font-family: var(--font-heading);
+      font-size: var(--text-sm);
+      font-weight: 600;
+      color: var(--color-accent);
+      transition: color var(--transition-fast);
+    }
+
+    .card__link:hover {
+      color: var(--color-accent-hover);
+    }
+
+    /* ---- Lightbox ---- */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background: rgba(27,31,30,0.93);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-4);
+      padding: var(--space-6);
+      animation: lbFadeIn 0.18s ease;
+    }
+
+    @keyframes lbFadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    .lightbox[hidden] { display: none; }
+
+    .lightbox__stage {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-3);
+      max-width: min(90vw, 900px);
+      max-height: 90vh;
+    }
+
+    .lightbox__img {
+      max-width: 100%;
+      max-height: calc(90vh - 48px);
+      object-fit: contain;
+      border-radius: var(--radius-md);
+      display: block;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.5);
+    }
+
+    .lightbox__counter {
+      font-family: var(--font-heading);
+      font-size: var(--text-xs);
+      letter-spacing: 0.08em;
+      color: rgba(242,238,230,0.45);
+    }
+
+    .lightbox__close {
+      position: fixed;
+      top: var(--space-6);
+      right: var(--space-6);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1px solid rgba(242,238,230,0.2);
+      background: rgba(242,238,230,0.08);
+      color: rgba(242,238,230,0.8);
+      font-size: 15px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background var(--transition-fast), border-color var(--transition-fast);
+      z-index: 1001;
+    }
+
+    .lightbox__close:hover {
+      background: rgba(242,238,230,0.16);
+      border-color: rgba(242,238,230,0.4);
+    }
+
+    .lightbox__nav {
+      flex-shrink: 0;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(242,238,230,0.2);
+      background: transparent;
+      color: rgba(242,238,230,0.7);
+      font-size: 24px;
+      line-height: 1;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
+      padding: 0;
+      align-self: center;
+    }
+
+    .lightbox__nav:hover {
+      background: rgba(242,238,230,0.1);
+      border-color: rgba(242,238,230,0.45);
+      color: rgba(242,238,230,1);
+    }
+
+    @media (max-width: 767px) {
+      .lightbox__nav { display: none; }
+      .lightbox__stage { max-width: 96vw; }
+    }
+
+    /* ==============================================
+       10. WRITING / BLOG SECTION
+       ============================================== */
+    .blog-list {
+      border-top: 1px solid var(--color-border);
+    }
+
+    .blog-post {
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    /* Header row — always visible */
+    .blog-post__head {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+      padding: var(--space-6) 0;
+      cursor: default;
+    }
+
+    .blog-post__date {
+      font-family: var(--font-heading);
+      font-size: var(--text-xs);
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--color-text-tertiary);
+    }
+
+    .blog-post__title {
+      font-family: var(--font-heading);
+      font-size: var(--text-xl);
+      font-weight: 600;
+      color: var(--color-text-primary);
+      line-height: 1.25;
+      transition: color var(--transition-fast);
+    }
+
+    @media (hover: hover) {
+      .blog-post:hover .blog-post__title {
+        color: var(--color-accent);
+      }
+    }
+
+    .blog-post.is-open .blog-post__title {
+      color: var(--color-accent);
+    }
+
+    /* Expand area */
+    .blog-post__expand {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      /* closing: collapse fast */
+      transition: max-height 0.3s ease-in, opacity 0.2s ease;
+    }
+
+    @media (hover: hover) {
+      .blog-post:hover .blog-post__expand {
+        max-height: 2500px;
+        opacity: 1;
+        /* opening: ease-out so content arrives quickly */
+        transition: max-height 0.6s ease-out, opacity 0.3s ease 0.05s;
+      }
+    }
+
+    .blog-post.is-open .blog-post__expand {
+      max-height: 2500px;
+      opacity: 1;
+      transition: max-height 0.6s ease-out, opacity 0.3s ease 0.05s;
+    }
+
+    .blog-post__content-inner {
+      padding-bottom: var(--space-12);
+    }
+
+    /* Prose */
+    .blog-post__content {
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      line-height: 1.8;
+      color: var(--color-text-secondary);
+      max-width: 680px;
+    }
+
+    .blog-post__content p + p {
+      margin-top: var(--space-4);
+    }
+
+    .blog-post__content h4 {
+      font-family: var(--font-heading);
+      font-size: var(--text-lg);
+      font-weight: 600;
+      color: var(--color-text-primary);
+      margin-top: var(--space-8);
+      margin-bottom: var(--space-3);
+    }
+
+    .blog-post__content strong {
+      font-weight: 600;
+      color: var(--color-text-primary);
+    }
+
+    .blog-post__content em {
+      color: var(--color-text-tertiary);
+    }
+
+    .blog-post__content ul {
+      padding-left: var(--space-6);
+      margin-top: var(--space-3);
+    }
+
+    .blog-post__content li + li {
+      margin-top: var(--space-2);
+    }
+
+    /* ==============================================
+       11. CONTACT SECTION
+       ============================================== */
+    .section--contact {
+      background: var(--color-surface-dark);
+      color: var(--color-text-on-dark);
+    }
+
+    .section--contact .section__label {
+      color: rgba(242,238,230,0.5);
+    }
+
+    .contact__headline {
+      font-family: var(--font-display);
+      font-size: var(--text-4xl);
+      font-weight: 400;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      color: var(--color-text-on-dark);
+      margin-bottom: var(--space-6);
+    }
+
+    @media (min-width: 768px) {
+      .contact__headline {
+        font-size: clamp(2.25rem, 4vw, 3.5rem);
+      }
+    }
+
+    .contact__sub {
+      font-size: var(--text-lg);
+      color: rgba(242,238,230,0.7);
+      max-width: 480px;
+      margin-bottom: var(--space-8);
+    }
+
+    .contact__email {
+      display: inline-block;
+      font-family: var(--font-heading);
+      font-size: var(--text-sm);
+      color: rgba(242,238,230,0.5);
+      margin-top: var(--space-4);
+    }
+
+    /* ==============================================
+       12. FOOTER
+       ============================================== */
+    .site-footer {
+      padding: var(--space-8) 0;
+      border-top: 1px solid var(--color-border);
+    }
+
+    .footer__inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: var(--space-4);
+    }
+
+    .footer__copy {
+      font-family: var(--font-heading);
+      font-size: var(--text-xs);
+      color: var(--color-text-tertiary);
+      letter-spacing: 0.04em;
+    }
+
+    .footer__social {
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+    }
+
+    .footer__social a {
+      color: var(--color-text-tertiary);
+      transition: color var(--transition-fast);
+      display: flex;
+      align-items: center;
+    }
+
+    .footer__social a:hover {
+      color: var(--color-accent);
+    }
+
+    /* ==============================================
+       13. UTILITY
+       ============================================== */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0,0,0,0);
+      white-space: nowrap;
+      border-width: 0;
+    }
+
+    /* ==============================================
+       14. RESPONSIVE OVERRIDES (mobile-first additions)
+       ============================================== */
+    @media (max-width: 767px) {
+      .site-header {
+        height: 52px;
+      }
+
+      .section--hero {
+        padding-top: 52px;
+      }
+
+      .hero__inner {
+        padding: var(--space-12) 0 var(--space-12);
+      }
+
+      .hero__statement {
+        font-size: var(--text-3xl);
+      }
+
+      .contact__headline {
+        font-size: var(--text-3xl);
+      }
+
+    }
+
+    /* ==============================================
+       15. REDUCED MOTION
+       ============================================== */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+      }
+      html {
+        scroll-behavior: auto;
+      }
+    }
+
+    /* Hero load-in */
+    @media (prefers-reduced-motion: no-preference) {
+      .hero__inner {
+        opacity: 0;
+        animation: heroFadeIn 0.6s ease 0.1s forwards;
+      }
+
+      @keyframes heroFadeIn {
+        to { opacity: 1; }
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================
+       HEADER / NAVIGATION
+       ============================================ -->
+  <header id="site-header" class="site-header">
+    <div class="container">
+      <a href="#top" class="logo" aria-label="UTAKATA — home">
+        UTAKATA
+        <span class="logo-jp" aria-hidden="true">ウタカタ</span>
+      </a>
+
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a href="#portfolio">
+          <span data-en>Work</span>
+          <span data-jp hidden>作品</span>
+        </a>
+        <a href="#writing">
+          <span data-en>Writing</span>
+          <span data-jp hidden>考えること</span>
+        </a>
+        <a href="#contact">
+          <span data-en>Contact</span>
+          <span data-jp hidden>お問い合わせ</span>
+        </a>
+      </nav>
+
+      <button id="lang-toggle" class="lang-toggle" aria-label="Switch language / 言語切替">
+        <span class="lang-option active" data-lang-label="en">EN</span>
+        <span class="lang-separator" aria-hidden="true">|</span>
+        <span class="lang-option" data-lang-label="jp">JP</span>
+      </button>
+    </div>
+  </header>
+
+
+  <!-- ============================================
+       HERO SECTION
+       ============================================ -->
+  <section id="top" class="section section--hero" aria-label="Hero">
+    <div class="container">
+      <div class="hero__inner">
+
+        <h1 class="hero__studio-name">
+          <span data-en>UTAKATA</span>
+          <span data-jp hidden>ウタカタ</span>
+        </h1>
+
+        <p class="hero__tagline">
+          <span data-en>AI Digital Marketing Lab</span>
+          <span data-jp hidden>AIデジタルマーケティングラボ</span>
+        </p>
+
+        <p class="hero__statement">
+          <span data-en>Content that reads well. For humans, and for AI.</span>
+          <span data-jp hidden>人にもAIにも、よく読まれるコンテンツ。</span>
+        </p>
+
+        <a href="#portfolio" class="btn btn--primary">
+          <span data-en>View Work →</span>
+          <span data-jp hidden>作品を見る →</span>
+        </a>
+
+      </div>
+    </div>
+
+    <div class="hero__scroll" aria-hidden="true">
+      <span class="hero__scroll-line"></span>
+    </div>
+  </section>
+
+
+  <!-- ============================================
+       PORTFOLIO SECTION
+       ============================================ -->
+  <section id="portfolio" class="section section--portfolio" aria-labelledby="portfolio-heading">
+    <div class="container">
+
+      <p class="section__label">
+        <span data-en>Work</span>
+        <span data-jp hidden>作品</span>
+      </p>
+      <h2 id="portfolio-heading" class="section__heading">
+        <span data-en>Work</span>
+        <span data-jp hidden>作品</span>
+      </h2>
+      <p class="section__intro">
+        <span data-en>Two things. Both involve making content work harder.</span>
+        <span data-jp hidden>2つの領域。どちらも、コンテンツをもっと機能させることについてです。</span>
+      </p>
+
+      <div class="portfolio-grid">
+
+        <!-- ----------------------------------------
+             PORTFOLIO CARD 1: LLMO
+             ---------------------------------------- -->
+        <article class="card" data-card>
+
+          <div class="card__slider" data-slider>
+            <div class="card__slider-track">
+              <img src="case-folder/luxury-beauty-llmo-case/portfolio-slices/01-hero-premium-beauty-llmo.png"
+                   alt="Portfolio case: AI search strategy and audience segmentation for a premium beauty brand launch."
+                   loading="lazy">
+              <img src="case-folder/luxury-beauty-llmo-case/portfolio-slices/02-strategy-overview.png"
+                   alt="Strategy overview: audience segmentation and query cluster mapping."
+                   loading="lazy" aria-hidden="true">
+              <img src="case-folder/luxury-beauty-llmo-case/portfolio-slices/03-persona-keyword-example.png"
+                   alt="Persona and keyword example from the LLMO strategy."
+                   loading="lazy" aria-hidden="true">
+            </div>
+            <button class="slider-btn slider-btn--prev" aria-label="Previous image" tabindex="-1">&#8249;</button>
+            <button class="slider-btn slider-btn--next" aria-label="Next image" tabindex="-1">&#8250;</button>
+            <div class="slider-dots" aria-hidden="true">
+              <span class="slider-dot is-active"></span>
+              <span class="slider-dot"></span>
+              <span class="slider-dot"></span>
+            </div>
+          </div>
+
+          <div class="card__body">
+            <div class="card__header">
+              <h3 class="card__title">
+                <span data-en>LLMO — Designing Content for Human and AI Readers</span>
+                <span data-jp hidden>LLMO — 人とAIの両方に届くコンテンツ設計</span>
+              </h3>
+              <div class="card__tags">
+                <span data-en>
+                  <span class="tag">LLMO</span>
+                </span>
+                <span data-jp hidden>
+                  <span class="tag">LLMO</span>
+                </span>
+              </div>
+            </div>
+
+            <p class="card__desc card__desc--short">
+              <span data-en>When someone asks an AI about your brand, what does it say? Most content wasn't designed for that question. We design content that works for both human readers and AI systems — from web copy to multilingual site architecture.</span>
+              <span data-jp hidden>AIにあなたのブランドについて尋ねたとき、何と答えるか。ほとんどのコンテンツはその問いを想定していません。人間にもAIにも届くコンテンツを、ウェブコピーから多言語サイト設計まで手がけます。</span>
+            </p>
+
+            <div class="card__expand" aria-hidden="true">
+              <p class="card__desc card__desc--long">
+                <span data-en>Search used to mean Google. Now it means asking Claude, ChatGPT, or Perplexity. AI systems summarize, synthesize, and make citations — and they work from whatever they can find and read. Brand content designed only for human readers often gets misrepresented or missed entirely. LLMO (LLM Optimization) is the practice of structuring content so it works accurately in both modes. We apply this across marketing copy, website architecture, and multilingual content in Japanese, English, and Chinese.</span>
+                <span data-jp hidden>かつて検索といえばGoogleのことでした。今は、ClaudeやChatGPT、Perplexityに尋ねることを指します。AIは要約し、統合し、引用します——そして読めるものを使って答えを組み立てます。人間向けにしか設計されていないブランドコンテンツは、誤って伝えられるか、無視されるかのどちらかです。LLMO（LLM最適化）とは、両方のモードで正確に機能するようにコンテンツを構造化する実践です。</span>
+              </p>
+              <div class="card__tags" style="margin-top: var(--space-4); flex-wrap: wrap; gap: var(--space-1); display: flex;">
+                <span data-en>
+                  <span class="tag">Content Strategy</span>
+                  <span class="tag">Multilingual</span>
+                  <span class="tag">APAC</span>
+                </span>
+                <span data-jp hidden>
+                  <span class="tag">コンテンツ戦略</span>
+                  <span class="tag">多言語</span>
+                  <span class="tag">APAC</span>
+                </span>
+              </div>
+              <a href="#" class="card__link" aria-label="View LLMO project">
+                <span data-en>View project →</span>
+                <span data-jp hidden>プロジェクトを見る →</span>
+              </a>
+            </div>
+          </div>
+
+        </article>
+
+        <!-- ----------------------------------------
+             PORTFOLIO CARD 2: Interactive Content
+             ---------------------------------------- -->
+        <article class="card" data-card>
+
+          <div class="card__slider" data-slider>
+            <div class="card__slider-track">
+              <img src="case-folder/top-10-tech-trend-personality-test/case-slices/01-home.png"
+                   alt="Portfolio project: personality quiz home screen for a technology brand public event."
+                   loading="lazy">
+              <img src="case-folder/top-10-tech-trend-personality-test/case-slices/02-question.png"
+                   alt="Quiz question screen showing a personality question."
+                   loading="lazy" aria-hidden="true">
+              <img src="case-folder/top-10-tech-trend-personality-test/case-slices/03-question-selected.png"
+                   alt="Quiz question screen with an answer selected."
+                   loading="lazy" aria-hidden="true">
+              <img src="case-folder/top-10-tech-trend-personality-test/case-slices/04-result.png"
+                   alt="Quiz result screen showing a strategic technology archetype."
+                   loading="lazy" aria-hidden="true">
+            </div>
+            <button class="slider-btn slider-btn--prev" aria-label="Previous image" tabindex="-1">&#8249;</button>
+            <button class="slider-btn slider-btn--next" aria-label="Next image" tabindex="-1">&#8250;</button>
+            <div class="slider-dots" aria-hidden="true">
+              <span class="slider-dot is-active"></span>
+              <span class="slider-dot"></span>
+              <span class="slider-dot"></span>
+              <span class="slider-dot"></span>
+            </div>
+          </div>
+
+          <div class="card__body">
+            <div class="card__header">
+              <h3 class="card__title">
+                <span data-en>Interactive Content — Built for People, Readable by AI</span>
+                <span data-jp hidden>インタラクティブコンテンツ — 人に楽しまれ、AIに読まれる設計</span>
+              </h3>
+              <div class="card__tags">
+                <span data-en>
+                  <span class="tag">Interactive</span>
+                </span>
+                <span data-jp hidden>
+                  <span class="tag">インタラクティブ</span>
+                </span>
+              </div>
+            </div>
+
+            <p class="card__desc card__desc--short">
+              <span data-en>A 10-question personality quiz built for a technology company's public event. Visitors scan a QR code, discover which strategic technology archetype fits their personality, and walk away with a result worth sharing.</span>
+              <span data-jp hidden>テクノロジー企業の公開イベント向けに制作した10問のパーソナリティクイズ。QRコードをスキャンして、自分の個性に重なる戦略テクノロジーアーキタイプを発見し、シェアしたくなる結果を手に入れる体験。</span>
+            </p>
+
+            <div class="card__expand" aria-hidden="true">
+              <p class="card__desc card__desc--long">
+                <span data-en>The brief was simple: make a serious technology brand feel human and approachable — at a street event, on a phone screen, in under two minutes. The result was a mobile-first quiz that maps 10 personality types to 10 strategic technology themes. Each result felt personal, worth reading twice, and designed to travel beyond the room. Every result page was engineered for screenshot and share, with content structured so AI systems can also read, summarize, and cite it accurately.</span>
+                <span data-jp hidden>ブリーフはシンプルだった。シリアスなテクノロジーブランドを、路上のイベントで、スマートフォンの画面上で、2分以内に、人間らしく親しみやすく感じさせること。生まれたのは、10の個性を10の戦略テクノロジーテーマに対応させたモバイルファーストのクイズ。結果は個人的で、読み返したくなり、会場を超えて広がるように設計された。</span>
+              </p>
+              <div class="card__tags" style="margin-top: var(--space-4); flex-wrap: wrap; gap: var(--space-1); display: flex;">
+                <span data-en>
+                  <span class="tag">Mobile-first</span>
+                  <span class="tag">Brand Activation</span>
+                  <span class="tag">UX</span>
+                </span>
+                <span data-jp hidden>
+                  <span class="tag">モバイルファースト</span>
+                  <span class="tag">ブランド活性化</span>
+                  <span class="tag">UX</span>
+                </span>
+              </div>
+              <a href="#" class="card__link" aria-label="View Interactive Content project">
+                <span data-en>View project →</span>
+                <span data-jp hidden>プロジェクトを見る →</span>
+              </a>
+            </div>
+          </div>
+
+        </article>
+
+        <!-- [EXTEND: NEW-CARD]
+             To add a new portfolio card:
+             1. Copy any existing <article class="card" data-card> block above
+             2. Replace title, description, tags, image src, and link href
+             3. Paste before this comment inside .portfolio-grid
+             No CSS changes required.
+             END [EXTEND: NEW-CARD] -->
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================
+       WRITING / BLOG SECTION
+       ============================================ -->
+  <section id="writing" class="section section--writing" aria-labelledby="writing-heading">
+    <div class="container">
+
+      <p class="section__label">
+        <span data-en>Writing</span>
+        <span data-jp hidden>考えること</span>
+      </p>
+      <h2 id="writing-heading" class="section__heading">
+        <span data-en>Writing</span>
+        <span data-jp hidden>考えること</span>
+      </h2>
+      <p class="section__intro">
+        <span data-en>Ideas that came from the work.</span>
+        <span data-jp hidden>仕事から生まれた考え。</span>
+      </p>
+
+      <div class="blog-list">
+
+        <!-- ----------------------------------------
+             BLOG POST 1: What does an AI say about your brand?
+             ---------------------------------------- -->
+        <article class="blog-post" data-blog-post>
+
+          <div class="blog-post__head">
+            <time class="blog-post__date" datetime="2026-05-22">2026-05-22</time>
+            <h3 class="blog-post__title">
+              <span data-en>What does an AI say about your brand?</span>
+              <span data-jp hidden>あなたのブランドについて、AIは何と言うか</span>
+            </h3>
+          </div>
+
+          <div class="blog-post__expand" aria-hidden="true">
+            <div class="blog-post__content-inner">
+
+              <!-- EN -->
+              <div class="blog-post__content" data-en>
+                <p>Try this. Open an AI and ask it a question about your brand or product. Ask it to describe what the brand does, who it's for, what makes it different. Read the answer.</p>
+                <p>Is your brand and product in the answer? Is it accurate? Is it the version the brand would recognize? Or is it a plausible-sounding summary assembled from whatever the AI had access to — a mix of old press releases, review sites, and someone's blog post from 2021?</p>
+                <p>Most brands don't know it.</p>
+                <h4>The change that's already happened</h4>
+                <p>Search behavior is shifting. Not replacing — shifting. A growing proportion of the moments when people used to type a query into Google now happen inside a conversation with an AI. Product comparisons. Category introductions. Brand evaluations. "What's a good [X] for [Y]?" used to produce ten blue links. Now it produces a paragraph or two, with the AI making recommendations rather than just listing options.</p>
+                <p>The difference matters. A search result is a link — users decide whether to click. An AI answer is a statement — the AI has already decided. If your brand isn't in the answer, or is represented inaccurately, you won't know unless you go looking.</p>
+                <h4>What LLMO is</h4>
+                <p>LLMO stands for LLM Optimization — the practice of designing content so that AI language models can read it accurately, summarize it correctly, and cite it usefully.</p>
+                <p>It is the discipline of writing and structuring content clearly enough that a system reading at scale can understand what you actually mean.</p>
+                <p>This works across three layers.</p>
+                <p><strong>How content is written.</strong> AI systems process structure. Clear claims, specific details, consistent terminology. Content that hedges everything and promises nothing trains the AI to describe you as "a leading provider of innovative solutions." Which tells no one anything.</p>
+                <p><strong>How websites are built.</strong> The architecture of a site — what information lives where, how pages relate to each other, what's in metadata and what's only in images — affects AI readability the same way it affects human readability, but with different failure modes. A piece of information buried in a decorative graphic doesn't exist for an AI reader.</p>
+                <p><strong>How multilingual content works.</strong> If your brand operates in multiple languages, each version of your content trains AI systems separately. An accurate English description and a vague Japanese description produce different results for different audiences. LLMO across languages requires that each version is specific in its own right — not translated, not approximate.</p>
+                <h4>What we build at UTAKATA</h4>
+                <p>The two types of work we do here come from the same question: what does it mean to design content that actually works?</p>
+                <p>The first is LLMO work. We are helping brands think about their content and site architecture from both sides: the human reading it now, and the AI synthesizing it next. This is strategy and structure work, applied to marketing copy, website design, and multilingual content across Japanese, English, and Chinese.</p>
+                <p>The second is embedding AI readability into interactive content — FAQs, personality tests, divination experiences, brand tools. These started as a separate interest, but the connection became obvious quickly. A well-designed quiz generates specific, structured outputs that are easy for both humans and AI to understand. That makes it one of the most LLMO-ready types of content that exists.</p>
+                <p>The question is how content works — for the person reading it now, and for the AI that reads it next. Build for both.</p>
+                <p><em>UTAKATA is an AI digital marketing lab. If you want to talk about this work, please contact us.</em></p>
+              </div>
+
+              <!-- JP -->
+              <div class="blog-post__content" data-jp hidden>
+                <p>AI時代のブランド価値を、検索から「対話」へ最適化するデジタルマーケティングラボ。</p>
+                <p>現代の検索行動は、リンクのクリックから「AIとの会話」へと劇的に変化しています。ユーザーが製品やブランドを比較・評価する際、AIの回答の中にあなたのブランドが正しく、かつ魅力的に存在しているかどうかが、ビジネスの成否を分ける鍵となります。</p>
+                <p>UTAKATAは、LLM（大規模言語モデル）の特性を深く理解し、貴社のブランドコンテンツをAIが正確に解釈・引用・推薦できるように最適化する「LLMO（LLM最適化）」の専門家集団です。私たちは、人間が読んでも魅力的であり、同時にAIが最も正しく価値を理解できる「二重の最適化」を実現し、次世代のマーケティング基盤を構築します。</p>
+                <h4>当社の強み：世界基準のインサイトとブランド戦略</h4>
+                <p>当社のコンサルティングチームは、世界最大手のIT調査・分析機関での技術・トレンド分析経験と、グローバルFMCG（日用消費財）ブランドのマネジメント経験を有するプロフェッショナルで構成されています。</p>
+                <p>AI技術の進化に対する深い洞察と、世界規模で愛されるブランドを構築してきた知見を融合し、論理と感性の両面から貴社のブランド価値を最大化します。</p>
+                <h4>サービスメニュー</h4>
+                <p>UTAKATAでは、ブランドの課題に合わせて以下のサービスを提供しています。</p>
+                <p><strong>1. LLMO（LLM最適化）コンサルティング</strong></p>
+                <p>AIに対してあなたのブランドの「正体」を正確に伝えるための戦略策定・改善を行います。</p>
+                <ul>
+                  <li><strong>コンテンツ・コピーライティング最適化：</strong>AIに誤解されない、明確な主張と具体的詳細を持つ構造への書き換え。</li>
+                  <li><strong>サイト構造・メタデータ設計：</strong>AIが巡回・解釈しやすいウェブサイト設計、情報構造の最適化。</li>
+                  <li><strong>多言語ブランド整合性管理：</strong>日英中の言語間での表現のばらつきを排除し、AI上でのブランド評価を一貫させる。</li>
+                </ul>
+                <p><strong>2. AI対応型インタラクティブコンテンツ開発</strong></p>
+                <p>「ユーザーの体験」と「AIの読み取り」を両立させる、高機能な動的コンテンツを開発します。</p>
+                <ul>
+                  <li><strong>診断・テストツール構築：</strong>パーソナリティテストやブランド診断ツールなど、人間にとって面白く、かつAIがデータ構造を理解しやすいコンテンツの開発。</li>
+                  <li><strong>AI最適化FAQ・ブランドツール：</strong>ユーザーの疑問を即座に解決し、AIが回答の根拠として引用しやすいデータベース構造の設計。</li>
+                </ul>
+                <p><strong>3. ブランド評価診断（初期診断）</strong></p>
+                <p>まずは「AIからあなたのブランドがどう見えているか」を客観的なレポートで提示します。主要なAIツールに対するブランドの認識度、回答に含まれる正確性、および競合と比較した際の優位性の現状を調査・分析します。</p>
+              </div>
+
+            </div>
+          </div>
+
+        </article>
+
+        <!-- [EXTEND: NEW-POST]
+             To add a new blog post:
+             1. Copy any existing <article class="blog-post" data-blog-post> block above
+             2. Replace title, date, summary, EN body, JP body
+             3. Paste before this comment inside .blog-list
+             No CSS changes required.
+             END [EXTEND: NEW-POST] -->
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================
+       CONTACT / CTA SECTION
+       ============================================ -->
+  <section id="contact" class="section section--contact" aria-labelledby="contact-heading">
+    <div class="container">
+
+      <p class="section__label">
+        <span data-en>Contact</span>
+        <span data-jp hidden>お問い合わせ</span>
+      </p>
+
+      <h2 id="contact-heading" class="contact__headline">
+        <span data-en>Let's think together.</span>
+        <span data-jp hidden>一緒に考えましょう。</span>
+      </h2>
+
+      <p class="contact__sub">
+        <span data-en>For collaboration, consulting, or conversation — reach out.</span>
+        <span data-jp hidden>コラボレーション、コンサルティング、またはご相談は、お気軽にどうぞ。</span>
+      </p>
+
+      <a href="https://coconala.com/services/4232239" target="_blank" rel="noopener noreferrer" class="btn btn--primary" style="background: var(--color-accent); color: var(--color-bg);">
+        <span data-en>Get in touch →</span>
+        <span data-jp hidden>連絡する →</span>
+      </a>
+
+    </div>
+  </section>
+
+
+  <!-- ============================================
+       FOOTER
+       ============================================ -->
+  <footer class="site-footer">
+    <div class="container footer__inner">
+
+      <p class="footer__copy">
+        <span data-en>© 2026 UTAKATA</span>
+        <span data-jp hidden>© 2026 ウタカタ</span>
+      </p>
+
+      <div class="footer__social">
+
+        <!-- LinkedIn -->
+        <a href="https://www.linkedin.com/in/yuan-wei-wayne-46532a91/"
+           target="_blank"
+           rel="noopener noreferrer"
+           aria-label="LinkedIn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+          </svg>
+        </a>
+
+        <!-- GitHub — replace [your-github] with your handle before publishing -->
+        <a href="https://github.com/[your-github]"
+           target="_blank"
+           rel="noopener noreferrer"
+           aria-label="GitHub">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
+          </svg>
+        </a>
+
+        <!-- [EXTEND: SOCIAL-ICONS]
+             To add more social icons (X, etc.):
+             Copy the <a> block above, update href and aria-label,
+             and replace the SVG path with the new icon's path.
+             END [EXTEND: SOCIAL-ICONS] -->
+
+      </div>
+
+    </div>
+  </footer>
+
+
+  <!-- [EXTEND: NEW-SECTION]
+       To add a new page section (e.g., case library, services):
+       1. Insert a <section id="[name]" class="section section--[name]"> block
+          after the writing section and before the contact section
+       2. Add a nav link in the <nav class="site-nav"> block
+       3. Add bilingual content using data-en / data-jp pattern
+       4. Add corresponding CSS in the <style> block
+       END [EXTEND: NEW-SECTION] -->
+
+
+  <script>
+    /* ==============================================
+       HEADER SCROLL BEHAVIOR
+       ============================================== */
+    const header = document.getElementById('site-header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('is-scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+
+    /* ==============================================
+       LANGUAGE TOGGLE
+       ============================================== */
+    const langToggle = document.getElementById('lang-toggle');
+    const html = document.documentElement;
+
+    langToggle.addEventListener('click', () => {
+      const current = html.getAttribute('data-lang');
+      const next = current === 'en' ? 'jp' : 'en';
+
+      html.setAttribute('data-lang', next);
+      html.setAttribute('lang', next === 'jp' ? 'ja' : 'en');
+
+      // Update page title
+      const titleEl = document.querySelector('title');
+      if (titleEl) {
+        titleEl.textContent = next === 'jp'
+          ? titleEl.dataset.jpTitle
+          : titleEl.dataset.enTitle;
+      }
+
+      // Update toggle button visual state
+      document.querySelectorAll('.lang-option').forEach(opt => {
+        opt.classList.toggle('active', opt.dataset.langLabel === next);
+      });
+
+      localStorage.setItem('utakata-lang', next);
+    });
+
+    // Restore saved language preference on load
+    const savedLang = localStorage.getItem('utakata-lang');
+    if (savedLang && savedLang !== 'en') {
+      html.setAttribute('data-lang', savedLang);
+      html.setAttribute('lang', savedLang === 'jp' ? 'ja' : 'en');
+      document.querySelectorAll('.lang-option').forEach(opt => {
+        opt.classList.toggle('active', opt.dataset.langLabel === savedLang);
+      });
+    }
+
+
+    /* ==============================================
+       LIGHTBOX
+       ============================================== */
+    const lightbox = (() => {
+      const lb        = document.createElement('div');
+      lb.className    = 'lightbox';
+      lb.setAttribute('role', 'dialog');
+      lb.setAttribute('aria-modal', 'true');
+      lb.setAttribute('aria-label', 'Image preview');
+      lb.hidden = true;
+      lb.innerHTML = `
+        <button class="lightbox__close" aria-label="Close">✕</button>
+        <button class="lightbox__nav lightbox__nav--prev" aria-label="Previous image">&#8249;</button>
+        <div class="lightbox__stage">
+          <img class="lightbox__img" src="" alt="">
+          <p class="lightbox__counter"></p>
+        </div>
+        <button class="lightbox__nav lightbox__nav--next" aria-label="Next image">&#8250;</button>
+      `;
+      document.body.appendChild(lb);
+
+      const lbImg     = lb.querySelector('.lightbox__img');
+      const lbCounter = lb.querySelector('.lightbox__counter');
+      const lbClose   = lb.querySelector('.lightbox__close');
+      const lbPrev    = lb.querySelector('.lightbox__nav--prev');
+      const lbNext    = lb.querySelector('.lightbox__nav--next');
+      let images = [], idx = 0;
+      let touchStartX = 0, touchDeltaX = 0;
+
+      function show() {
+        lbImg.src = images[idx].src;
+        lbImg.alt = images[idx].alt;
+        lbCounter.textContent = images.length > 1 ? `${idx + 1} / ${images.length}` : '';
+      }
+
+      function open(imgs, startIdx) {
+        images = imgs;
+        idx    = startIdx;
+        show();
+        lb.hidden = false;
+        document.body.style.overflow = 'hidden';
+        lbClose.focus();
+      }
+
+      function close() {
+        lb.hidden = true;
+        document.body.style.overflow = '';
+      }
+
+      function nav(dir) {
+        idx = (idx + images.length + dir) % images.length;
+        show();
+      }
+
+      lbClose.addEventListener('click', close);
+      lbPrev.addEventListener('click',  () => nav(-1));
+      lbNext.addEventListener('click',  () => nav(1));
+
+      // Close on backdrop click (not on stage content)
+      lb.addEventListener('click', e => { if (e.target === lb) close(); });
+
+      // Keyboard
+      document.addEventListener('keydown', e => {
+        if (lb.hidden) return;
+        if (e.key === 'Escape')     close();
+        if (e.key === 'ArrowLeft')  nav(-1);
+        if (e.key === 'ArrowRight') nav(1);
+      });
+
+      // Touch swipe inside lightbox
+      lb.addEventListener('touchstart', e => {
+        touchStartX = e.touches[0].clientX;
+        touchDeltaX = 0;
+      }, { passive: true });
+      lb.addEventListener('touchmove', e => {
+        touchDeltaX = touchStartX - e.touches[0].clientX;
+      }, { passive: true });
+      lb.addEventListener('touchend', () => {
+        if (Math.abs(touchDeltaX) > 40) nav(touchDeltaX > 0 ? 1 : -1);
+        touchDeltaX = 0;
+      });
+
+      return { open };
+    })();
+
+
+    /* ==============================================
+       IMAGE CAROUSEL
+       ============================================== */
+    document.querySelectorAll('[data-slider]').forEach(slider => {
+      const track      = slider.querySelector('.card__slider-track');
+      const imgs       = track.querySelectorAll('img');
+      const dots       = slider.querySelectorAll('.slider-dot');
+      const prevBtn    = slider.querySelector('.slider-btn--prev');
+      const nextBtn    = slider.querySelector('.slider-btn--next');
+      const total      = imgs.length;
+      let current      = 0;
+      let touchStartX  = 0;
+      let touchDeltaX  = 0;
+
+      function goTo(index) {
+        current = (index + total) % total;
+        track.style.transform = `translateX(-${current * 100}%)`;
+        dots.forEach((dot, i) => dot.classList.toggle('is-active', i === current));
+        imgs.forEach((img, i) => img.setAttribute('aria-hidden', String(i !== current)));
+      }
+
+      prevBtn.addEventListener('click', e => { e.stopPropagation(); goTo(current - 1); });
+      nextBtn.addEventListener('click', e => { e.stopPropagation(); goTo(current + 1); });
+
+      slider.addEventListener('touchstart', e => {
+        touchStartX = e.touches[0].clientX;
+        touchDeltaX = 0;
+      }, { passive: true });
+      slider.addEventListener('touchmove', e => {
+        touchDeltaX = touchStartX - e.touches[0].clientX;
+      }, { passive: true });
+      slider.addEventListener('touchend', e => {
+        if (Math.abs(touchDeltaX) > 40) {
+          e.stopPropagation();
+          goTo(touchDeltaX > 0 ? current + 1 : current - 1);
+        }
+        touchDeltaX = 0;
+      });
+
+      // Click image → open lightbox at current slide
+      const imageData = [...imgs].map(img => ({ src: img.src, alt: img.alt }));
+      imgs.forEach((img, i) => {
+        img.addEventListener('click', e => {
+          e.stopPropagation();
+          lightbox.open(imageData, i);
+        });
+      });
+
+      goTo(0);
+    });
+
+
+    /* ==============================================
+       PORTFOLIO CARDS — mobile tap to expand
+       ============================================== */
+    document.querySelectorAll('[data-card]').forEach(card => {
+      card.addEventListener('click', () => {
+        // Only toggle on touch/pointer-coarse devices; desktop uses CSS :hover
+        if (window.matchMedia('(hover: none)').matches) {
+          card.classList.toggle('is-expanded');
+          const expand = card.querySelector('.card__expand');
+          if (expand) {
+            expand.setAttribute('aria-hidden', String(!card.classList.contains('is-expanded')));
+          }
+        }
+      });
+    });
+
+
+    /* ==============================================
+       BLOG POSTS — mobile tap to expand
+       (desktop uses CSS :hover via grid-template-rows)
+       ============================================== */
+    document.querySelectorAll('[data-blog-post]').forEach(post => {
+      const head   = post.querySelector('.blog-post__head');
+      const expand = post.querySelector('.blog-post__expand');
+      if (!head) return;
+
+      head.addEventListener('click', () => {
+        if (window.matchMedia('(hover: none)').matches) {
+          const isOpen = post.classList.toggle('is-open');
+          if (expand) expand.setAttribute('aria-hidden', String(!isOpen));
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
