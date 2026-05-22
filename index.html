@@ -320,10 +320,64 @@
       display: flex;
       align-items: center;
       padding-top: 60px; /* header height */
+      position: relative;
+      overflow: hidden;
     }
 
+    /* Hero copy column. */
     .hero__inner {
       padding: var(--space-24) 0 var(--space-16);
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-12);
+      align-items: center;
+    }
+
+    @media (min-width: 768px) {
+      .hero__inner {
+        grid-template-columns: minmax(0, 0.55fr) minmax(300px, 0.45fr);
+        gap: var(--space-12);
+      }
+    }
+
+    /* ---- copy column ---- */
+    .hero__copy {
+      /* natural left column */
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ---- visual column ---- */
+    .hero__visual {
+      position: relative;
+      z-index: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: calc(var(--space-8) * -1);
+      pointer-events: none;
+    }
+
+    .hero__illustration {
+      width: min(100%, 560px);
+      height: auto;
+      display: block;
+      object-fit: contain;
+      border: 0;
+      background: transparent;
+      filter: hue-rotate(-22deg) saturate(0.87) brightness(1.03);
+    }
+
+    @media (min-width: 768px) {
+      .hero__visual {
+        justify-content: flex-end;
+        margin-top: 0;
+        transform: translateX(4%);
+      }
+
+      .hero__illustration {
+        width: clamp(360px, 42vw, 640px);
+      }
     }
 
     .hero__studio-name {
@@ -364,7 +418,6 @@
       line-height: 1.15;
       letter-spacing: -0.01em;
       color: var(--color-text-primary);
-      max-width: 640px;
       margin-bottom: var(--space-12);
     }
 
@@ -374,6 +427,7 @@
       }
     }
 
+    /* ---- scroll indicator ---- */
     .hero__scroll {
       position: absolute;
       bottom: var(--space-8);
@@ -397,10 +451,6 @@
       font-size: var(--text-xs);
       letter-spacing: 0.1em;
       text-transform: uppercase;
-    }
-
-    .section--hero {
-      position: relative;
     }
 
     /* ==============================================
@@ -1010,10 +1060,20 @@
 
       .hero__inner {
         padding: var(--space-12) 0 var(--space-12);
+        gap: var(--space-8);
       }
 
       .hero__statement {
         font-size: var(--text-3xl);
+      }
+
+      .hero__visual {
+        margin-bottom: var(--space-8);
+      }
+
+      .hero__illustration {
+        width: min(108%, 440px);
+        opacity: 0.92;
       }
 
       .contact__headline {
@@ -1091,25 +1151,41 @@
     <div class="container">
       <div class="hero__inner">
 
-        <h1 class="hero__studio-name">
-          <span data-en>UTAKATA</span>
-          <span data-jp hidden>ウタカタ</span>
-        </h1>
+        <!-- LEFT: typography + CTA -->
+        <div class="hero__copy">
+          <h1 class="hero__studio-name">
+            <span data-en>UTAKATA</span>
+            <span data-jp hidden>ウタカタ</span>
+          </h1>
 
-        <p class="hero__tagline">
-          <span data-en>AI Digital Marketing Lab</span>
-          <span data-jp hidden>AIデジタルマーケティングラボ</span>
-        </p>
+          <p class="hero__tagline">
+            <span data-en>AI Digital Marketing Lab</span>
+            <span data-jp hidden>AIデジタルマーケティングラボ</span>
+          </p>
 
-        <p class="hero__statement">
-          <span data-en>Content that reads well. For humans, and for AI.</span>
-          <span data-jp hidden>人にもAIにも、よく読まれるコンテンツ。</span>
-        </p>
+          <p class="hero__statement">
+            <span data-en>Content that reads well. For humans, and for AI.</span>
+            <span data-jp hidden>人にもAIにも、よく読まれるコンテンツ。</span>
+          </p>
 
-        <a href="#portfolio" class="btn btn--primary">
-          <span data-en>View Work →</span>
-          <span data-jp hidden>作品を見る →</span>
-        </a>
+          <a href="#portfolio" class="btn btn--primary">
+            <span data-en>View Work →</span>
+            <span data-jp hidden>作品を見る →</span>
+          </a>
+        </div>
+
+        <!-- RIGHT: borderless floating illustration -->
+        <figure class="hero__visual" aria-hidden="true">
+          <img
+            class="hero__illustration"
+            src="hero-illustration.png"
+            alt=""
+            width="1536"
+            height="1024"
+            loading="eager"
+            decoding="async"
+          >
+        </figure>
 
       </div>
     </div>
@@ -1170,8 +1246,8 @@
           <div class="card__body">
             <div class="card__header">
               <h3 class="card__title">
-                <span data-en>LLMO — Designing Content for Human and AI Readers</span>
-                <span data-jp hidden>LLMO — 人とAIの両方に届くコンテンツ設計</span>
+                <span data-en>LLMO: Content Strategy for Human Readers and AI Systems</span>
+                <span data-jp hidden>LLMO: 人とAIの両方に届くコンテンツ戦略</span>
               </h3>
               <div class="card__tags">
                 <span data-en>
@@ -1184,14 +1260,14 @@
             </div>
 
             <p class="card__desc card__desc--short">
-              <span data-en>When someone asks an AI about your brand, what does it say? Most content wasn't designed for that question. We design content that works for both human readers and AI systems — from web copy to multilingual site architecture.</span>
-              <span data-jp hidden>AIにあなたのブランドについて尋ねたとき、何と答えるか。ほとんどのコンテンツはその問いを想定していません。人間にもAIにも届くコンテンツを、ウェブコピーから多言語サイト設計まで手がけます。</span>
+              <span data-en>A premium beauty launch needed to reach people before they searched for the brand by name. The work focused on making brand content readable, credible, and easy for AI systems to cite.</span>
+              <span data-jp hidden>プレミアムビューティーブランドのローンチにおいて、ブランド名で検索される前の段階から接点をつくる必要がありました。AIに読み取られ、信頼され、引用されやすいコンテンツ構造を設計しました。</span>
             </p>
 
             <div class="card__expand" aria-hidden="true">
               <p class="card__desc card__desc--long">
-                <span data-en>Search used to mean Google. Now it means asking Claude, ChatGPT, or Perplexity. AI systems summarize, synthesize, and make citations — and they work from whatever they can find and read. Brand content designed only for human readers often gets misrepresented or missed entirely. LLMO (LLM Optimization) is the practice of structuring content so it works accurately in both modes. We apply this across marketing copy, website architecture, and multilingual content in Japanese, English, and Chinese.</span>
-                <span data-jp hidden>かつて検索といえばGoogleのことでした。今は、ClaudeやChatGPT、Perplexityに尋ねることを指します。AIは要約し、統合し、引用します——そして読めるものを使って答えを組み立てます。人間向けにしか設計されていないブランドコンテンツは、誤って伝えられるか、無視されるかのどちらかです。LLMO（LLM最適化）とは、両方のモードで正確に機能するようにコンテンツを構造化する実践です。</span>
+                <span data-en><strong>Challenge:</strong> Search behavior is shifting from keywords to questions. When people ask AI tools for routines, gifts, comparisons, or ingredient guidance, brand content needs to be readable, credible, and easy to cite.<br><br><strong>Approach:</strong> We mapped audience intent, built query clusters, and designed a landing page structure that works for both human decision-making and AI summarization.<br><br><strong>Output:</strong> 5 priority audience segments, 42 AI search query clusters, landing page information architecture, and multilingual content direction for Japanese, English, and Chinese.<br><br><strong>Why it matters:</strong> The work helps the brand appear accurately in AI-assisted discovery, while still giving human readers a clear reason to trust, understand, and act.</span>
+                <span data-jp hidden><strong>課題:</strong> 検索行動は、キーワード検索から「AIに質問する」行動へ広がっています。ルーティン、ギフト、比較、成分に関する質問に対して、ブランドコンテンツは読み取られやすく、信頼されやすく、引用されやすい構造である必要があります。<br><br><strong>アプローチ:</strong> ユーザーの検索意図を整理し、質問クラスターを設計。人が理解しやすく、AIにも要約・引用されやすいランディングページ構造を組み立てました。<br><br><strong>アウトプット:</strong> 5つの優先オーディエンスセグメント、42のAI検索クエリークラスター、ランディングページの情報設計、日英中に対応する多言語コンテンツ方針。<br><br><strong>意義:</strong> AIを介した発見の場でブランドが正確に伝わるようにしながら、人間の読者にも理解、信頼、行動の理由を与える設計です。</span>
               </p>
               <div class="card__tags" style="margin-top: var(--space-4); flex-wrap: wrap; gap: var(--space-1); display: flex;">
                 <span data-en>
@@ -1247,8 +1323,8 @@
           <div class="card__body">
             <div class="card__header">
               <h3 class="card__title">
-                <span data-en>Interactive Content — Built for People, Readable by AI</span>
-                <span data-jp hidden>インタラクティブコンテンツ — 人に楽しまれ、AIに読まれる設計</span>
+                <span data-en>Interactive Content: A Mobile Quiz for Brand Activation</span>
+                <span data-jp hidden>インタラクティブコンテンツ: ブランド体験をつくるモバイルクイズ</span>
               </h3>
               <div class="card__tags">
                 <span data-en>
@@ -1261,14 +1337,14 @@
             </div>
 
             <p class="card__desc card__desc--short">
-              <span data-en>A 10-question personality quiz built for a technology company's public event. Visitors scan a QR code, discover which strategic technology archetype fits their personality, and walk away with a result worth sharing.</span>
-              <span data-jp hidden>テクノロジー企業の公開イベント向けに制作した10問のパーソナリティクイズ。QRコードをスキャンして、自分の個性に重なる戦略テクノロジーアーキタイプを発見し、シェアしたくなる結果を手に入れる体験。</span>
+              <span data-en>A public event experience for a technology company, designed so visitors could understand, complete, and share it from their phones in just a few minutes.</span>
+              <span data-jp hidden>テクノロジー企業の公開イベントにおいて、来場者がスマートフォンで直感的に参加し、短時間で完了し、結果を共有できる体験を設計しました。</span>
             </p>
 
             <div class="card__expand" aria-hidden="true">
               <p class="card__desc card__desc--long">
-                <span data-en>The brief was simple: make a serious technology brand feel human and approachable — at a street event, on a phone screen, in under two minutes. The result was a mobile-first quiz that maps 10 personality types to 10 strategic technology themes. Each result felt personal, worth reading twice, and designed to travel beyond the room. Every result page was engineered for screenshot and share, with content structured so AI systems can also read, summarize, and cite it accurately.</span>
-                <span data-jp hidden>ブリーフはシンプルだった。シリアスなテクノロジーブランドを、路上のイベントで、スマートフォンの画面上で、2分以内に、人間らしく親しみやすく感じさせること。生まれたのは、10の個性を10の戦略テクノロジーテーマに対応させたモバイルファーストのクイズ。結果は個人的で、読み返したくなり、会場を超えて広がるように設計された。</span>
+                <span data-en><strong>Challenge:</strong> The brand topic was serious and strategic, but the event environment required something fast, human, and approachable.<br><br><strong>Approach:</strong> We designed a mobile-first personality quiz that mapped 10 personality types to 10 strategic technology themes. The experience was built for QR activation, quick completion, and screenshot-friendly result pages.<br><br><strong>Output:</strong> A 10-question quiz flow, 10 technology archetype results, mobile-first UX design, and shareable result pages structured for both people and AI readability.<br><br><strong>Why it matters:</strong> The quiz turned an abstract technology theme into a personal experience, helping visitors engage with the brand and leave with something memorable enough to share.</span>
+                <span data-jp hidden><strong>課題:</strong> 扱うテーマは専門的で戦略的。一方で、イベントの場では短時間で理解でき、親しみやすく、参加したくなる設計が求められました。<br><br><strong>アプローチ:</strong> 10問のパーソナリティクイズを設計し、10の個性タイプを10の戦略テクノロジーテーマに対応させました。QRコードから参加でき、短時間で完了し、結果画面をシェアしやすい構成にしています。<br><br><strong>アウトプット:</strong> 10問のクイズフロー、10種類のテクノロジーアーキタイプ、モバイルファーストのUX設計、人にもAIにも読み取りやすい結果ページ構造。<br><br><strong>意義:</strong> 抽象的なテクノロジーテーマを、自分ごと化できる体験に変換。来場者がブランドに触れ、記憶に残り、共有したくなる接点をつくりました。</span>
               </p>
               <div class="card__tags" style="margin-top: var(--space-4); flex-wrap: wrap; gap: var(--space-1); display: flex;">
                 <span data-en>
