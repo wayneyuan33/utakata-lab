@@ -231,13 +231,19 @@
 
     .site-nav {
       display: none;
-      gap: var(--space-8);
+      gap: var(--space-6);
     }
 
     @media (min-width: 768px) {
       .site-nav {
         display: flex;
         align-items: center;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .site-nav {
+        gap: var(--space-8);
       }
     }
 
@@ -524,6 +530,7 @@
         linear-gradient(180deg, rgba(216,214,206,0.38), rgba(216,214,206,0));
       border-top: 1px solid rgba(216,214,206,0.75);
       border-bottom: 1px solid rgba(216,214,206,0.75);
+      scroll-margin-top: 72px;
     }
 
     .beacon__layout {
@@ -1433,6 +1440,10 @@
       </a>
 
       <nav class="site-nav" aria-label="Primary navigation">
+        <a href="#beacon-geo">
+          <span data-en>Beacon GEO</span>
+          <span data-jp>Beacon GEO</span>
+        </a>
         <a href="#portfolio">
           <span data-en>Work</span>
           <span data-jp>作品</span>
@@ -1541,9 +1552,9 @@
               <span data-en>Request a report →</span>
               <span data-jp>レポートを相談する →</span>
             </a>
-            <a href="#beacon-geo-measures" class="btn btn--secondary">
-              <span data-en>What we measure</span>
-              <span data-jp>測定内容を見る</span>
+            <a href="case-folder/beacon-geo-report/beacon-geo-example-report.pdf" class="btn btn--secondary" target="_blank" rel="noopener">
+              <span data-en>Download Example Report</span>
+              <span data-jp>サンプルレポートをダウンロード</span>
             </a>
           </div>
 
@@ -1554,8 +1565,8 @@
             <div class="beacon-carousel__viewport">
               <div class="beacon-carousel__track">
                 <figure class="beacon-carousel__slide">
-                  <img src="case-folder/beacon-geo-report/beacon-geo-ad-01-prompt-strategy.png"
-                       alt="Beacon GEO prompt strategy visual showing buyer prompts and model selection."
+                  <img src="case-folder/beacon-geo-report/beacon-geo-ad-01-keyword-map.png"
+                       alt="Beacon GEO keyword map visual showing buyer questions and model selection."
                        width="1600"
                        height="1000"
                        loading="eager"
@@ -1594,12 +1605,12 @@
             </div>
 
             <div class="beacon-carousel__meta" aria-live="polite">
-              <p class="beacon-carousel__title" data-beacon-title>Prompt Strategy</p>
-              <p class="beacon-carousel__caption" data-beacon-caption>Start from real buyer questions, not generic keywords.</p>
+              <p class="beacon-carousel__title" data-beacon-title>Keyword Map</p>
+              <p class="beacon-carousel__caption" data-beacon-caption>Map the buyer questions AI will answer.</p>
             </div>
 
             <div class="beacon-carousel__dots" aria-label="Beacon GEO visual steps">
-              <button class="beacon-carousel__dot" type="button" aria-label="Show Prompt Strategy visual" aria-current="true"></button>
+              <button class="beacon-carousel__dot" type="button" aria-label="Show Keyword Map visual" aria-current="true"></button>
               <button class="beacon-carousel__dot" type="button" aria-label="Show AI Answer Capture visual"></button>
               <button class="beacon-carousel__dot" type="button" aria-label="Show Visibility Metrics visual"></button>
               <button class="beacon-carousel__dot" type="button" aria-label="Show Report Output visual"></button>
@@ -2192,7 +2203,7 @@
                 <p>重要な購買者の問いを選ぶ。</p>
                 <p>回答を集め、証拠を残し、ブランドと競合を比較し、どのコンテンツやポジショニングを改善すべきかを決める。</p>
                 <p>まずはそれで十分です。</p>
-                <p><em>自社ブランドの AI可視性レポートが必要な場合は、UTAKATA LAB までご相談ください。Prompt設計、分析実行、コンテンツ改善・ポジショニング改善の提案まで支援できます。</em></p>
+                <p><em>自社ブランドの AI可視性レポートが必要な場合は、UTAKATA LAB までご相談ください。問いの設計、分析実行、コンテンツ改善・ポジショニング改善の提案まで支援できます。</em></p>
               </div>
 
             </div>
@@ -2583,12 +2594,12 @@
       const slideData = [
         {
           en: {
-            title: 'Prompt Strategy',
-            caption: 'Start from real buyer questions, not generic keywords.'
+            title: 'Keyword Map',
+            caption: 'Map the buyer questions AI will answer.'
           },
           jp: {
-            title: 'Prompt設計',
-            caption: '一般的なキーワードではなく、実際の購買者に近い問いから始めます。'
+            title: 'キーワードマップ',
+            caption: 'AIが回答する購買者の質問をマッピングします。'
           }
         },
         {
