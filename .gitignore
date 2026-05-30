@@ -1,0 +1,19 @@
+.audit-*/
+audit-*.png
+.DS_Store
+Thumbs.db
+desktop.ini
+*.log
+*.tmp
+.claude/
+
+# Local planning and collateral files kept outside the public static-site release.
+*-prd.md
+blog-*.md
+coconala-blog-draft.html
+Gartner_TRP2026_VolunteerSchedule.xlsx
+UTAKATA_LAB_SalesDeck_JP_20260525.pptx
+meishi-*.png
+ChatGPT Image *.png
+case-folder/*/index.html
+case-folder/top-10-tech-trend-personality-test/What Tech Are You - Full Prototype.html

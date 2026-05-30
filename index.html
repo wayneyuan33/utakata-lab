@@ -294,23 +294,23 @@
     }
 
     /* Language visibility rules */
-    [data-lang="en"] [data-jp]   { display: none !important; }
-    [data-lang="en"] [data-en]   { display: revert; }
-    [data-lang="jp"] [data-en]   { display: none !important; }
-    [data-lang="jp"] [data-jp]   { display: revert; }
+    html[data-lang="en"] [data-jp] { display: none !important; }
+    html[data-lang="jp"] [data-en] { display: none !important; }
+    html[data-lang="en"] [data-en],
+    html[data-lang="jp"] [data-jp] { display: revert; }
 
     /* Block-level bilingual elements */
-    [data-lang="en"] p[data-jp],
-    [data-lang="en"] div[data-jp],
-    [data-lang="en"] h1[data-jp],
-    [data-lang="en"] h2[data-jp],
-    [data-lang="en"] h3[data-jp] { display: none !important; }
+    html[data-lang="en"] p[data-jp],
+    html[data-lang="en"] div[data-jp],
+    html[data-lang="en"] h1[data-jp],
+    html[data-lang="en"] h2[data-jp],
+    html[data-lang="en"] h3[data-jp] { display: none !important; }
 
-    [data-lang="jp"] p[data-en],
-    [data-lang="jp"] div[data-en],
-    [data-lang="jp"] h1[data-en],
-    [data-lang="jp"] h2[data-en],
-    [data-lang="jp"] h3[data-en] { display: none !important; }
+    html[data-lang="jp"] p[data-en],
+    html[data-lang="jp"] div[data-en],
+    html[data-lang="jp"] h1[data-en],
+    html[data-lang="jp"] h2[data-en],
+    html[data-lang="jp"] h3[data-en] { display: none !important; }
 
     /* ==============================================
        6. HERO
@@ -517,7 +517,316 @@
     }
 
     /* ==============================================
-       9. PORTFOLIO SECTION
+       9. BEACON GEO FEATURED REPORT
+       ============================================== */
+    .section--beacon {
+      background:
+        linear-gradient(180deg, rgba(216,214,206,0.38), rgba(216,214,206,0));
+      border-top: 1px solid rgba(216,214,206,0.75);
+      border-bottom: 1px solid rgba(216,214,206,0.75);
+    }
+
+    .beacon__layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        "copy"
+        "visual"
+        "proof";
+      gap: var(--space-10, 40px);
+      align-items: center;
+    }
+
+    @media (min-width: 960px) {
+      .beacon__layout {
+        grid-template-columns: minmax(0, 0.9fr) minmax(420px, 1.1fr);
+        grid-template-areas:
+          "copy visual"
+          "proof visual";
+        gap: var(--space-12);
+      }
+    }
+
+    .beacon__copy {
+      grid-area: copy;
+      max-width: 560px;
+      min-width: 0;
+    }
+
+    .beacon__title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 4rem);
+      font-weight: 400;
+      line-height: 1.04;
+      letter-spacing: 0;
+      margin-bottom: var(--space-6);
+    }
+
+    .beacon__lead {
+      font-size: var(--text-xl);
+      line-height: 1.55;
+      color: var(--color-text-primary);
+      margin-bottom: var(--space-4);
+    }
+
+    .beacon__support {
+      color: var(--color-text-secondary);
+      margin-bottom: var(--space-8);
+    }
+
+    .beacon__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-3);
+      margin-bottom: var(--space-8);
+    }
+
+    .beacon__visual {
+      grid-area: visual;
+      min-width: 0;
+      max-width: 100%;
+    }
+
+    .beacon-proof {
+      grid-area: proof;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-4);
+      border-top: 1px solid var(--color-border);
+      padding-top: var(--space-6);
+    }
+
+    @media (min-width: 640px) {
+      .beacon-proof {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    .beacon-proof__item {
+      padding-right: var(--space-4);
+    }
+
+    .beacon-proof__item h3 {
+      font-size: var(--text-base);
+      margin-bottom: var(--space-1);
+    }
+
+    .beacon-proof__item p {
+      color: var(--color-text-secondary);
+      font-size: var(--text-sm);
+      line-height: 1.65;
+    }
+
+    .beacon-carousel {
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+    }
+
+    .beacon-carousel__viewport {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+      aspect-ratio: 16 / 10;
+      background: var(--color-deep);
+      border: 1px solid rgba(27,31,30,0.14);
+      border-radius: var(--radius-md);
+      box-shadow: 0 20px 44px rgba(27,31,30,0.16);
+    }
+
+    .beacon-carousel__track {
+      height: 100%;
+      width: 100%;
+      min-width: 0;
+      display: flex;
+      transition: transform 0.36s ease;
+      will-change: transform;
+    }
+
+    .beacon-carousel__slide {
+      flex: 0 0 100%;
+      min-width: 0;
+      max-width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: clamp(6px, 1vw, 14px);
+      background: #1f2d26;
+    }
+
+    .beacon-carousel__slide img {
+      width: 100%;
+      min-width: 0;
+      max-width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .beacon-carousel__meta {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-2);
+      margin-top: var(--space-4);
+      color: var(--color-text-secondary);
+    }
+
+    .beacon-carousel__title {
+      font-family: var(--font-heading);
+      font-size: var(--text-sm);
+      font-weight: 600;
+      color: var(--color-text-primary);
+      letter-spacing: 0.02em;
+    }
+
+    .beacon-carousel__caption {
+      font-size: var(--text-sm);
+      line-height: 1.6;
+    }
+
+    .beacon-carousel__controls {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      pointer-events: none;
+      padding: 0 var(--space-3);
+    }
+
+    .beacon-carousel__btn {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: 1px solid rgba(242,238,230,0.38);
+      background: rgba(27,31,30,0.62);
+      color: var(--color-bg);
+      font-size: 22px;
+      cursor: pointer;
+      pointer-events: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background var(--transition-fast), border-color var(--transition-fast);
+    }
+
+    .beacon-carousel__btn:hover,
+    .beacon-carousel__btn:focus-visible {
+      background: rgba(27,31,30,0.86);
+      border-color: rgba(242,238,230,0.72);
+      outline: none;
+    }
+
+    .beacon-carousel__dots {
+      display: flex;
+      gap: var(--space-2);
+      margin-top: var(--space-4);
+    }
+
+    .beacon-carousel__dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      border: 1px solid var(--color-border);
+      background: transparent;
+      cursor: pointer;
+      padding: 0;
+      transition: background var(--transition-fast), transform var(--transition-fast), border-color var(--transition-fast);
+    }
+
+    .beacon-carousel__dot[aria-current="true"] {
+      background: var(--color-accent);
+      border-color: var(--color-accent);
+      transform: scale(1.12);
+    }
+
+    .beacon-report {
+      margin-top: var(--space-12);
+      padding-top: var(--space-8);
+      border-top: 1px solid var(--color-border);
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-6);
+    }
+
+    @media (min-width: 860px) {
+      .beacon-report {
+        grid-template-columns: minmax(220px, 0.35fr) minmax(0, 0.65fr);
+        align-items: start;
+      }
+    }
+
+    .beacon-report__eyebrow {
+      font-family: var(--font-heading);
+      font-size: var(--text-xs);
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      margin-bottom: var(--space-2);
+    }
+
+    .beacon-report__title {
+      font-size: var(--text-2xl);
+      margin-bottom: var(--space-3);
+    }
+
+    .beacon-report__intro {
+      color: var(--color-text-secondary);
+      line-height: 1.65;
+    }
+
+    .beacon-report__list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-3);
+      color: var(--color-text-secondary);
+    }
+
+    @media (min-width: 640px) {
+      .beacon-report__list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    .beacon-report__list li {
+      position: relative;
+      padding-left: var(--space-4);
+      line-height: 1.6;
+    }
+
+    .beacon-report__list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.72em;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--color-accent);
+    }
+
+    @media (max-width: 767px) {
+      .beacon__actions .btn {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .beacon-carousel__controls {
+        padding: 0 var(--space-2);
+      }
+
+      .beacon-carousel__btn {
+        width: 34px;
+        height: 34px;
+      }
+    }
+
+    /* ==============================================
+       10. PORTFOLIO SECTION
        ============================================== */
     .portfolio-grid {
       display: grid;
@@ -850,7 +1159,12 @@
       flex-direction: column;
       gap: var(--space-2);
       padding: var(--space-6) 0;
-      cursor: default;
+      cursor: pointer;
+    }
+
+    .blog-post__head:focus-visible {
+      outline: 2px solid var(--color-accent);
+      outline-offset: 4px;
     }
 
     .blog-post__date {
@@ -869,6 +1183,13 @@
       color: var(--color-text-primary);
       line-height: 1.25;
       transition: color var(--transition-fast);
+    }
+
+    .blog-post__summary {
+      max-width: 680px;
+      font-size: var(--text-sm);
+      line-height: 1.65;
+      color: var(--color-text-secondary);
     }
 
     @media (hover: hover) {
@@ -890,17 +1211,8 @@
       transition: max-height 0.3s ease-in, opacity 0.2s ease;
     }
 
-    @media (hover: hover) {
-      .blog-post:hover .blog-post__expand {
-        max-height: 2500px;
-        opacity: 1;
-        /* opening: ease-out so content arrives quickly */
-        transition: max-height 0.6s ease-out, opacity 0.3s ease 0.05s;
-      }
-    }
-
     .blog-post.is-open .blog-post__expand {
-      max-height: 2500px;
+      max-height: 12000px;
       opacity: 1;
       transition: max-height 0.6s ease-out, opacity 0.3s ease 0.05s;
     }
@@ -1123,15 +1435,15 @@
       <nav class="site-nav" aria-label="Primary navigation">
         <a href="#portfolio">
           <span data-en>Work</span>
-          <span data-jp hidden>作品</span>
+          <span data-jp>作品</span>
         </a>
         <a href="#writing">
           <span data-en>Writing</span>
-          <span data-jp hidden>考えること</span>
+          <span data-jp>考えること</span>
         </a>
         <a href="#contact">
           <span data-en>Contact</span>
-          <span data-jp hidden>お問い合わせ</span>
+          <span data-jp>お問い合わせ</span>
         </a>
       </nav>
 
@@ -1155,22 +1467,22 @@
         <div class="hero__copy">
           <h1 class="hero__studio-name">
             <span data-en>UTAKATA LAB</span>
-            <span data-jp hidden>ウタカタ・ラボ</span>
+            <span data-jp>ウタカタ・ラボ</span>
           </h1>
 
           <p class="hero__tagline">
             <span data-en>AI Digital Marketing Lab</span>
-            <span data-jp hidden>AIデジタルマーケティングラボ</span>
+            <span data-jp>AIデジタルマーケティングラボ</span>
           </p>
 
           <p class="hero__statement">
             <span data-en>Content that reads well. For humans, and for AI.</span>
-            <span data-jp hidden>人にもAIにも、よく読まれるコンテンツ。</span>
+            <span data-jp>人にもAIにも、よく読まれるコンテンツ。</span>
           </p>
 
           <a href="#portfolio" class="btn btn--primary">
             <span data-en>View Work →</span>
-            <span data-jp hidden>作品を見る →</span>
+            <span data-jp>作品を見る →</span>
           </a>
         </div>
 
@@ -1197,6 +1509,205 @@
 
 
   <!-- ============================================
+       BEACON GEO FEATURED REPORT
+       ============================================ -->
+  <section id="beacon-geo" class="section section--beacon beacon" aria-labelledby="beacon-geo-heading">
+    <div class="container">
+      <div class="beacon__layout">
+
+        <div class="beacon__copy">
+          <p class="section__label">
+            <span data-en>Featured Report</span>
+            <span data-jp>注目レポート</span>
+          </p>
+
+          <h2 id="beacon-geo-heading" class="beacon__title">
+            <span data-en>AI Visibility Report Tool: Beacon GEO</span>
+            <span data-jp>AI可視性レポートツール：Beacon GEO</span>
+          </h2>
+
+          <p class="beacon__lead">
+            <span data-en>See how AI answer engines describe, compare, and recommend your brand.</span>
+            <span data-jp>AI回答エンジンが、自社ブランドをどう説明し、比較し、推薦しているかを可視化します。</span>
+          </p>
+
+          <p class="beacon__support">
+            <span data-en>Beacon GEO helps us run structured AI visibility reports across real buyer prompts, competitor entities, and multiple AI answer engines. Instead of guessing whether your brand appears in AI answers, we measure coverage, share of voice, recommendation signals, and content opportunities.</span>
+            <span data-jp>Beacon GEO は、実際の購買者に近い Prompt、競合ブランド、複数の AI 回答エンジンをもとに、AI検索におけるブランド可視性を測定するためのレポートツールです。AI回答に自社ブランドが表示されているか、どれほど推薦されているか、競合と比べてどのような状態かを可視化します。</span>
+          </p>
+
+          <div class="beacon__actions">
+            <a href="mailto:utakatalab.hello@gmail.com?subject=AI%20Visibility%20Report%20Inquiry" class="btn btn--primary">
+              <span data-en>Request a report →</span>
+              <span data-jp>レポートを相談する →</span>
+            </a>
+            <a href="#beacon-geo-measures" class="btn btn--secondary">
+              <span data-en>What we measure</span>
+              <span data-jp>測定内容を見る</span>
+            </a>
+          </div>
+
+        </div>
+
+        <div class="beacon__visual">
+          <div class="beacon-carousel" data-beacon-carousel>
+            <div class="beacon-carousel__viewport">
+              <div class="beacon-carousel__track">
+                <figure class="beacon-carousel__slide">
+                  <img src="case-folder/beacon-geo-report/beacon-geo-ad-01-prompt-strategy.png"
+                       alt="Beacon GEO prompt strategy visual showing buyer prompts and model selection."
+                       width="1600"
+                       height="1000"
+                       loading="eager"
+                       decoding="async">
+                </figure>
+                <figure class="beacon-carousel__slide">
+                  <img src="case-folder/beacon-geo-report/beacon-geo-ad-02-ai-answer-capture.png"
+                       alt="Beacon GEO answer capture visual showing AI model collection progress."
+                       width="1600"
+                       height="1000"
+                       loading="lazy"
+                       decoding="async">
+                </figure>
+                <figure class="beacon-carousel__slide">
+                  <img src="case-folder/beacon-geo-report/beacon-geo-ad-03-visibility-metrics.png"
+                       alt="Beacon GEO visibility metrics visual showing coverage, share of voice, recommendation rate, and competitor comparison."
+                       width="1600"
+                       height="1000"
+                       loading="lazy"
+                       decoding="async">
+                </figure>
+                <figure class="beacon-carousel__slide">
+                  <img src="case-folder/beacon-geo-report/beacon-geo-ad-04-report-output.png"
+                       alt="Beacon GEO report output visual showing aggregate dashboard and reporting metrics."
+                       width="1600"
+                       height="1000"
+                       loading="lazy"
+                       decoding="async">
+                </figure>
+              </div>
+
+              <div class="beacon-carousel__controls">
+                <button class="beacon-carousel__btn beacon-carousel__btn--prev" type="button" aria-label="Previous Beacon GEO visual">&#8249;</button>
+                <button class="beacon-carousel__btn beacon-carousel__btn--next" type="button" aria-label="Next Beacon GEO visual">&#8250;</button>
+              </div>
+            </div>
+
+            <div class="beacon-carousel__meta" aria-live="polite">
+              <p class="beacon-carousel__title" data-beacon-title>Prompt Strategy</p>
+              <p class="beacon-carousel__caption" data-beacon-caption>Start from real buyer questions, not generic keywords.</p>
+            </div>
+
+            <div class="beacon-carousel__dots" aria-label="Beacon GEO visual steps">
+              <button class="beacon-carousel__dot" type="button" aria-label="Show Prompt Strategy visual" aria-current="true"></button>
+              <button class="beacon-carousel__dot" type="button" aria-label="Show AI Answer Capture visual"></button>
+              <button class="beacon-carousel__dot" type="button" aria-label="Show Visibility Metrics visual"></button>
+              <button class="beacon-carousel__dot" type="button" aria-label="Show Report Output visual"></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="beacon-proof" aria-label="Beacon GEO proof points">
+          <div class="beacon-proof__item">
+            <h3>
+              <span data-en>Coverage</span>
+              <span data-jp>カバレッジ</span>
+            </h3>
+            <p>
+              <span data-en>Whether your brand appears in relevant AI answers at all.</span>
+              <span data-jp>関連するAI回答の中に、自社ブランドが出てくるかを確認します。</span>
+            </p>
+          </div>
+          <div class="beacon-proof__item">
+            <h3>
+              <span data-en>Share of Voice</span>
+              <span data-jp>シェア・オブ・ボイス</span>
+            </h3>
+            <p>
+              <span data-en>How often your brand appears compared with competitors.</span>
+              <span data-jp>競合と比べて、自社ブランドがどれくらい言及されるかを測ります。</span>
+            </p>
+          </div>
+          <div class="beacon-proof__item">
+            <h3>
+              <span data-en>Recommendation Signals</span>
+              <span data-jp>推薦シグナル</span>
+            </h3>
+            <p>
+              <span data-en>Whether AI presents the brand as a good option for a buyer need.</span>
+              <span data-jp>AIが特定ニーズに対して自社ブランドを推薦しているかを見ます。</span>
+            </p>
+          </div>
+          <div class="beacon-proof__item">
+            <h3>
+              <span data-en>Prompt-Level Evidence</span>
+              <span data-jp>Promptごとの証拠</span>
+            </h3>
+            <p>
+              <span data-en>The original prompt, answer, model, and entity mentions behind each finding.</span>
+              <span data-jp>各所見のもとになるPrompt、回答、モデル、言及内容を保存します。</span>
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <div id="beacon-geo-measures" class="beacon-report">
+        <div>
+          <p class="beacon-report__eyebrow">
+            <span data-en>Report package</span>
+            <span data-jp>レポート内容</span>
+          </p>
+          <h3 class="beacon-report__title">
+            <span data-en>One-time AI Visibility Report</span>
+            <span data-jp>One-time AI Visibility Report</span>
+          </h3>
+          <p class="beacon-report__intro">
+            <span data-en>A structured first diagnosis for marketing, SEO/GEO, content, and agency reporting teams.</span>
+            <span data-jp>マーケティング、SEO/GEO、コンテンツ、代理店レポート向けの構造化された初回診断です。</span>
+          </p>
+        </div>
+
+        <ul class="beacon-report__list">
+          <li>
+            <span data-en>Brand and competitor setup</span>
+            <span data-jp>自社ブランドと競合セットの設定</span>
+          </li>
+          <li>
+            <span data-en>Prompt set design or calibration</span>
+            <span data-jp>Promptセットの設計または調整</span>
+          </li>
+          <li>
+            <span data-en>AI answer collection across selected models</span>
+            <span data-jp>選択したモデルでのAI回答収集</span>
+          </li>
+          <li>
+            <span data-en>Coverage, Share of Voice, Recommendation Rate</span>
+            <span data-jp>カバレッジ、シェア・オブ・ボイス、推薦率</span>
+          </li>
+          <li>
+            <span data-en>Entity comparison table</span>
+            <span data-jp>エンティティ比較テーブル</span>
+          </li>
+          <li>
+            <span data-en>Raw answer evidence</span>
+            <span data-jp>AI回答の原文証拠</span>
+          </li>
+          <li>
+            <span data-en>Content opportunity findings</span>
+            <span data-jp>コンテンツ改善機会の所見</span>
+          </li>
+          <li>
+            <span data-en>Executive summary and next-step recommendations</span>
+            <span data-jp>エグゼクティブサマリーと次アクション提案</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================
        PORTFOLIO SECTION
        ============================================ -->
   <section id="portfolio" class="section section--portfolio" aria-labelledby="portfolio-heading">
@@ -1204,15 +1715,15 @@
 
       <p class="section__label">
         <span data-en>Work</span>
-        <span data-jp hidden>作品</span>
+        <span data-jp>作品</span>
       </p>
       <h2 id="portfolio-heading" class="section__heading">
         <span data-en>Work</span>
-        <span data-jp hidden>作品</span>
+        <span data-jp>作品</span>
       </h2>
       <p class="section__intro">
         <span data-en>Two things. Both involve making content work harder.</span>
-        <span data-jp hidden>2つの領域。どちらも、コンテンツをもっと機能させることについてです。</span>
+        <span data-jp>2つの領域。どちらも、コンテンツをもっと機能させることについてです。</span>
       </p>
 
       <div class="portfolio-grid">
@@ -1247,13 +1758,13 @@
             <div class="card__header">
               <h3 class="card__title">
                 <span data-en>LLMO: Content Strategy for Human Readers and AI Systems</span>
-                <span data-jp hidden>LLMO: 人とAIの両方に届くコンテンツ戦略</span>
+                <span data-jp>LLMO: 人とAIの両方に届くコンテンツ戦略</span>
               </h3>
               <div class="card__tags">
                 <span data-en>
                   <span class="tag">LLMO</span>
                 </span>
-                <span data-jp hidden>
+                <span data-jp>
                   <span class="tag">LLMO</span>
                 </span>
               </div>
@@ -1261,13 +1772,13 @@
 
             <p class="card__desc card__desc--short">
               <span data-en>A premium beauty launch needed to reach people before they searched for the brand by name. The work focused on making brand content readable, credible, and easy for AI systems to cite.</span>
-              <span data-jp hidden>プレミアムビューティーブランドのローンチにおいて、ブランド名で検索される前の段階から接点をつくる必要がありました。AIに読み取られ、信頼され、引用されやすいコンテンツ構造を設計しました。</span>
+              <span data-jp>プレミアムビューティーブランドのローンチにおいて、ブランド名で検索される前の段階から接点をつくる必要がありました。AIに読み取られ、信頼され、引用されやすいコンテンツ構造を設計しました。</span>
             </p>
 
             <div class="card__expand" aria-hidden="true">
               <p class="card__desc card__desc--long">
                 <span data-en><strong>Challenge:</strong> Search behavior is shifting from keywords to questions. When people ask AI tools for routines, gifts, comparisons, or ingredient guidance, brand content needs to be readable, credible, and easy to cite.<br><br><strong>Approach:</strong> We mapped audience intent, built query clusters, and designed a landing page structure that works for both human decision-making and AI summarization.<br><br><strong>Output:</strong> 5 priority audience segments, 42 AI search query clusters, landing page information architecture, and multilingual content direction for Japanese, English, and Chinese.<br><br><strong>Why it matters:</strong> The work helps the brand appear accurately in AI-assisted discovery, while still giving human readers a clear reason to trust, understand, and act.</span>
-                <span data-jp hidden><strong>課題:</strong> 検索行動は、キーワード検索から「AIに質問する」行動へ広がっています。ルーティン、ギフト、比較、成分に関する質問に対して、ブランドコンテンツは読み取られやすく、信頼されやすく、引用されやすい構造である必要があります。<br><br><strong>アプローチ:</strong> ユーザーの検索意図を整理し、質問クラスターを設計。人が理解しやすく、AIにも要約・引用されやすいランディングページ構造を組み立てました。<br><br><strong>アウトプット:</strong> 5つの優先オーディエンスセグメント、42のAI検索クエリークラスター、ランディングページの情報設計、日英中に対応する多言語コンテンツ方針。<br><br><strong>意義:</strong> AIを介した発見の場でブランドが正確に伝わるようにしながら、人間の読者にも理解、信頼、行動の理由を与える設計です。</span>
+                <span data-jp><strong>課題:</strong> 検索行動は、キーワード検索から「AIに質問する」行動へ広がっています。ルーティン、ギフト、比較、成分に関する質問に対して、ブランドコンテンツは読み取られやすく、信頼されやすく、引用されやすい構造である必要があります。<br><br><strong>アプローチ:</strong> ユーザーの検索意図を整理し、質問クラスターを設計。人が理解しやすく、AIにも要約・引用されやすいランディングページ構造を組み立てました。<br><br><strong>アウトプット:</strong> 5つの優先オーディエンスセグメント、42のAI検索クエリークラスター、ランディングページの情報設計、日英中に対応する多言語コンテンツ方針。<br><br><strong>意義:</strong> AIを介した発見の場でブランドが正確に伝わるようにしながら、人間の読者にも理解、信頼、行動の理由を与える設計です。</span>
               </p>
               <div class="card__tags" style="margin-top: var(--space-4); flex-wrap: wrap; gap: var(--space-1); display: flex;">
                 <span data-en>
@@ -1275,7 +1786,7 @@
                   <span class="tag">Multilingual</span>
                   <span class="tag">APAC</span>
                 </span>
-                <span data-jp hidden>
+                <span data-jp>
                   <span class="tag">コンテンツ戦略</span>
                   <span class="tag">多言語</span>
                   <span class="tag">APAC</span>
@@ -1283,7 +1794,7 @@
               </div>
               <a href="#" class="card__link" aria-label="View LLMO project">
                 <span data-en>View project →</span>
-                <span data-jp hidden>プロジェクトを見る →</span>
+                <span data-jp>プロジェクトを見る →</span>
               </a>
             </div>
           </div>
@@ -1324,13 +1835,13 @@
             <div class="card__header">
               <h3 class="card__title">
                 <span data-en>Interactive Content: A Mobile Quiz for Brand Activation</span>
-                <span data-jp hidden>インタラクティブコンテンツ: ブランド体験をつくるモバイルクイズ</span>
+                <span data-jp>インタラクティブコンテンツ: ブランド体験をつくるモバイルクイズ</span>
               </h3>
               <div class="card__tags">
                 <span data-en>
                   <span class="tag">Interactive</span>
                 </span>
-                <span data-jp hidden>
+                <span data-jp>
                   <span class="tag">インタラクティブ</span>
                 </span>
               </div>
@@ -1338,13 +1849,13 @@
 
             <p class="card__desc card__desc--short">
               <span data-en>A public event experience for a technology company, designed so visitors could understand, complete, and share it from their phones in just a few minutes.</span>
-              <span data-jp hidden>テクノロジー企業の公開イベントにおいて、来場者がスマートフォンで直感的に参加し、短時間で完了し、結果を共有できる体験を設計しました。</span>
+              <span data-jp>テクノロジー企業の公開イベントにおいて、来場者がスマートフォンで直感的に参加し、短時間で完了し、結果を共有できる体験を設計しました。</span>
             </p>
 
             <div class="card__expand" aria-hidden="true">
               <p class="card__desc card__desc--long">
                 <span data-en><strong>Challenge:</strong> The brand topic was serious and strategic, but the event environment required something fast, human, and approachable.<br><br><strong>Approach:</strong> We designed a mobile-first personality quiz that mapped 10 personality types to 10 strategic technology themes. The experience was built for QR activation, quick completion, and screenshot-friendly result pages.<br><br><strong>Output:</strong> A 10-question quiz flow, 10 technology archetype results, mobile-first UX design, and shareable result pages structured for both people and AI readability.<br><br><strong>Why it matters:</strong> The quiz turned an abstract technology theme into a personal experience, helping visitors engage with the brand and leave with something memorable enough to share.</span>
-                <span data-jp hidden><strong>課題:</strong> 扱うテーマは専門的で戦略的。一方で、イベントの場では短時間で理解でき、親しみやすく、参加したくなる設計が求められました。<br><br><strong>アプローチ:</strong> 10問のパーソナリティクイズを設計し、10の個性タイプを10の戦略テクノロジーテーマに対応させました。QRコードから参加でき、短時間で完了し、結果画面をシェアしやすい構成にしています。<br><br><strong>アウトプット:</strong> 10問のクイズフロー、10種類のテクノロジーアーキタイプ、モバイルファーストのUX設計、人にもAIにも読み取りやすい結果ページ構造。<br><br><strong>意義:</strong> 抽象的なテクノロジーテーマを、自分ごと化できる体験に変換。来場者がブランドに触れ、記憶に残り、共有したくなる接点をつくりました。</span>
+                <span data-jp><strong>課題:</strong> 扱うテーマは専門的で戦略的。一方で、イベントの場では短時間で理解でき、親しみやすく、参加したくなる設計が求められました。<br><br><strong>アプローチ:</strong> 10問のパーソナリティクイズを設計し、10の個性タイプを10の戦略テクノロジーテーマに対応させました。QRコードから参加でき、短時間で完了し、結果画面をシェアしやすい構成にしています。<br><br><strong>アウトプット:</strong> 10問のクイズフロー、10種類のテクノロジーアーキタイプ、モバイルファーストのUX設計、人にもAIにも読み取りやすい結果ページ構造。<br><br><strong>意義:</strong> 抽象的なテクノロジーテーマを、自分ごと化できる体験に変換。来場者がブランドに触れ、記憶に残り、共有したくなる接点をつくりました。</span>
               </p>
               <div class="card__tags" style="margin-top: var(--space-4); flex-wrap: wrap; gap: var(--space-1); display: flex;">
                 <span data-en>
@@ -1352,7 +1863,7 @@
                   <span class="tag">Brand Activation</span>
                   <span class="tag">UX</span>
                 </span>
-                <span data-jp hidden>
+                <span data-jp>
                   <span class="tag">モバイルファースト</span>
                   <span class="tag">ブランド活性化</span>
                   <span class="tag">UX</span>
@@ -1360,7 +1871,7 @@
               </div>
               <a href="#" class="card__link" aria-label="View Interactive Content project">
                 <span data-en>View project →</span>
-                <span data-jp hidden>プロジェクトを見る →</span>
+                <span data-jp>プロジェクトを見る →</span>
               </a>
             </div>
           </div>
@@ -1388,18 +1899,306 @@
 
       <p class="section__label">
         <span data-en>Writing</span>
-        <span data-jp hidden>考えること</span>
+        <span data-jp>考えること</span>
       </p>
       <h2 id="writing-heading" class="section__heading">
         <span data-en>Writing</span>
-        <span data-jp hidden>考えること</span>
+        <span data-jp>考えること</span>
       </h2>
       <p class="section__intro">
         <span data-en>Ideas that came from the work.</span>
-        <span data-jp hidden>仕事から生まれた考え。</span>
+        <span data-jp>仕事から生まれた考え。</span>
       </p>
 
       <div class="blog-list">
+
+        <!-- ----------------------------------------
+             BLOG POST 1: What is GEO?
+             ---------------------------------------- -->
+        <article class="blog-post" data-blog-post>
+
+          <div class="blog-post__head">
+            <time class="blog-post__date" datetime="2026-05-30">2026-05-30</time>
+            <h3 class="blog-post__title">
+              <span data-en>What is GEO, and how can a company measure it?</span>
+              <span data-jp>GEOとは何か。企業はAI検索での見え方をどう測るべきか</span>
+            </h3>
+            <p class="blog-post__summary">
+              <span data-en>GEO is not just another SEO acronym. It is the practice of understanding how AI answer engines describe, compare, and recommend your brand.</span>
+              <span data-jp>GEOは単なるSEO用語ではありません。AI回答エンジンがブランドをどう説明し、比較し、推薦しているかを把握するための考え方です。</span>
+            </p>
+          </div>
+
+          <div class="blog-post__expand" aria-hidden="true">
+            <div class="blog-post__content-inner">
+
+              <!-- EN -->
+              <div class="blog-post__content" data-en>
+                <p>Search is no longer only a page of links.</p>
+                <p>People still use Google. They still compare websites, read reviews, and ask colleagues. But a growing part of discovery now happens inside AI answer engines: ChatGPT, Claude, Perplexity, Gemini, and other systems that do not simply return pages. They read, summarize, compare, and answer.</p>
+                <p>That changes the question for brands.</p>
+                <p>It is no longer enough to ask, &quot;Do we rank?&quot; A second question now matters: &quot;When someone asks an AI about this category, are we present in the answer, and are we described correctly?&quot;</p>
+                <p>That question is the beginning of GEO.</p>
+                <h4>GEO means Generative Engine Optimization</h4>
+                <p>GEO stands for Generative Engine Optimization. It is the practice of understanding and improving how AI answer engines describe, compare, and recommend brands, products, services, and ideas.</p>
+                <p>The word can sound more complicated than the work itself. At its core, GEO asks a practical question:</p>
+                <p>When a buyer asks an AI for help, what does the AI say?</p>
+                <p>Does it mention your brand? Does it understand what you do? Does it compare you with the right competitors? Does it recommend you for the situations where you are actually a good fit? Does it use current, specific language, or does it repeat vague descriptions from old pages and secondhand sources?</p>
+                <p>GEO is not about trying to trick AI systems. It is about making your brand easier to understand, easier to verify, and easier to cite.</p>
+                <h4>How GEO is different from SEO</h4>
+                <p>SEO usually starts with pages and rankings. A team chooses keywords, improves pages, earns links, and measures whether a page appears in search results.</p>
+                <p>GEO starts with answers.</p>
+                <p>The buyer may never see a list of ten links. They may ask, &quot;What are the best tools for monitoring AI visibility in Japan?&quot; or &quot;Which skincare brands are good for sensitive skin?&quot; or &quot;What should a mid-sized B2B company use for customer data activation?&quot; The AI then produces an answer that may include explanations, comparisons, recommendations, and citations.</p>
+                <p>In SEO, the user chooses which result to click.</p>
+                <p>In AI answers, the system has already made a first selection. It decides which entities to mention, which differences to highlight, and which sources seem useful enough to support the answer.</p>
+                <p>That does not make SEO obsolete. It makes the brand visibility layer wider. A company still needs strong pages, clear content, and technical accessibility. But it also needs to understand whether those assets are being interpreted correctly inside generated answers.</p>
+                <h4>What companies should measure</h4>
+                <p>A first GEO diagnosis does not need to be complicated. It should measure a small set of things clearly and repeatedly.</p>
+                <p><strong>Brand coverage.</strong> Does your brand appear in relevant AI answers at all? Coverage is the simplest visibility signal. If buyers ask category-level questions and your brand never appears, the issue is not wording. The issue is absence.</p>
+                <p><strong>Share of voice.</strong> When your brand does appear, how often does it appear compared with competitors? AI visibility is relative. A brand can appear occasionally and still be less visible than a competitor that appears across more prompts, more contexts, and more answer engines.</p>
+                <p><strong>Recommendation rate.</strong> Mentions are not the same as recommendations. An AI answer may name your brand neutrally, mention it as one option, or actively recommend it for a specific use case. Those differences matter.</p>
+                <p><strong>Positioning accuracy.</strong> Does the AI describe the brand in a way the company would recognize? Sometimes the problem is not invisibility. It is an outdated category, an incomplete audience definition, or a description that misses the reason the brand exists.</p>
+                <p><strong>Competitor mentions.</strong> Which competitors appear most often, and in what contexts? This helps a team see whether AI systems associate the category with a different set of players than the company expects.</p>
+                <p><strong>Content gaps.</strong> Which questions reveal weak or missing source material? If AI answers are vague, wrong, or overly dependent on third-party descriptions, that often points to content that needs to be clarified on the brand's own site.</p>
+                <h4>How to run a simple first diagnosis</h4>
+                <p>The first step is to choose the category. A brand should not start with every possible question. Start with one market, one language, and one buying context.</p>
+                <p>Next, define the comparison set. Include direct competitors, adjacent alternatives, and sometimes the category leaders that buyers are likely to know. AI answer engines do not organize the market according to your internal sales deck. They organize it around what they can read and what users ask.</p>
+                <p>Then write buyer prompts. These should sound like real questions, not keyword lists. Good prompts include category discovery, comparison, use case, budget, audience, geography, and decision criteria.</p>
+                <p>For example:</p>
+                <ul>
+                  <li>&quot;What tools can help a marketing team measure whether its brand appears in AI answers?&quot;</li>
+                  <li>&quot;Which agencies can support AI search visibility for Japanese and English content?&quot;</li>
+                  <li>&quot;How should a B2B SaaS company check whether ChatGPT recommends its competitors?&quot;</li>
+                </ul>
+                <p>After that, test across multiple AI answer engines. A single model is not enough. Different systems use different sources, have different answer styles, and may produce different recommendations.</p>
+                <p>Finally, collect the answers and compare them. Do not only read them once. Preserve the prompt, model, answer, cited sources, brand mentions, competitor mentions, recommendation language, and useful evidence. The point is not to win one prompt. The point is to see patterns.</p>
+                <h4>Why manual checking is not enough</h4>
+                <p>Manual checking is useful for intuition. It is not enough for reporting.</p>
+                <p>There are too many prompts. A brand may need to test dozens of buyer questions across categories, languages, and journey stages.</p>
+                <p>Answers vary by model. A brand may be visible in one answer engine and absent in another. A competitor may be recommended in one context and ignored in the next.</p>
+                <p>Evidence needs to be preserved. Marketing teams need to know not only the score, but what the AI actually said and why that answer matters.</p>
+                <p>Teams also need repeatability. A CMO, SEO lead, content strategist, or agency client cannot make decisions from screenshots gathered ad hoc. They need a structured way to compare visibility over time.</p>
+                <h4>GEO turns visibility into a signal</h4>
+                <p>The useful version of GEO is not another acronym to add to a strategy deck. It is a way to turn a vague concern into a measurable marketing signal.</p>
+                <p>Are we present?</p>
+                <p>Are we understood?</p>
+                <p>Are we recommended?</p>
+                <p>Are our competitors being explained more clearly than we are?</p>
+                <p>Once those questions can be measured, teams can act. They can improve content, adjust positioning, clarify product pages, build better comparison material, and create source material that reflects what buyers actually ask.</p>
+                <p>That is the practical value of GEO. It helps a company see how it exists inside AI-mediated discovery, then decide what to improve.</p>
+                <p><em>If you want to understand how your brand appears in AI answers, UTAKATA LAB can run a structured AI Visibility Report using Beacon GEO.</em></p>
+              </div>
+
+              <!-- JP -->
+              <div class="blog-post__content" data-jp>
+                <p>検索は、リンクの一覧だけではなくなりました。</p>
+                <p>Googleで調べる行動は今も残っています。比較サイトを読み、レビューを確認し、同僚に聞くこともあります。ただ、発見や比較の一部は、ChatGPT、Claude、Perplexity、GeminiのようなAI回答エンジンの中で起きるようになっています。これらのシステムは、ページを並べるだけではありません。読み、要約し、比較し、答えを生成します。</p>
+                <p>その変化によって、ブランドが見るべき問いも変わります。</p>
+                <p>「検索順位はどうか」だけでは足りません。これからは、「誰かがAIにこのカテゴリーについて聞いたとき、自社ブランドは回答の中に出てくるのか。そして正しく説明されているのか」も重要になります。</p>
+                <p>この問いが、GEOの出発点です。</p>
+                <h4>GEOはGenerative Engine Optimizationのこと</h4>
+                <p>GEOはGenerative Engine Optimizationの略です。AI回答エンジンが、ブランド、商品、サービス、考え方をどのように説明し、比較し、推薦しているかを把握し、改善していくための実践です。</p>
+                <p>言葉だけを見ると少し難しく感じるかもしれません。ただ、中心にある問いはとても実務的です。</p>
+                <p>購買者がAIに相談したとき、AIは何と答えているのか。</p>
+                <p>自社ブランドは言及されているのか。何をしている会社として理解されているのか。比較対象は適切か。本当に強みを持つ用途で推薦されているのか。現在の正確な情報にもとづいて説明されているのか、それとも古いページや第三者の曖昧な説明をもとに要約されているのか。</p>
+                <p>GEOはAIをだますためのものではありません。ブランドを、AIにも人にも理解しやすく、検証しやすく、引用しやすい状態に整えるための考え方です。</p>
+                <h4>GEOとSEOの違い</h4>
+                <p>SEOは、多くの場合、ページと順位から始まります。キーワードを選び、ページを改善し、リンクや技術要件を整え、検索結果でどの位置に表示されるかを見ます。</p>
+                <p>GEOは、回答から始まります。</p>
+                <p>購買者は、リンク一覧を見ないかもしれません。「日本でAI可視性を測定するにはどんなツールがあるか」「敏感肌に向いているスキンケアブランドはどれか」「中堅B2B企業が顧客データ活用を始めるなら何を使うべきか」とAIに聞くかもしれません。AIは、説明、比較、推薦、引用を含む回答を返します。</p>
+                <p>SEOでは、ユーザーがどの検索結果をクリックするかを選びます。</p>
+                <p>AI回答では、その前段階でシステムが一度選んでいます。どのブランドを言及するか、どの違いを強調するか、どの情報源を信頼できるものとして扱うかを、回答の中で判断しています。</p>
+                <p>これはSEOが不要になるという意味ではありません。むしろ、ブランド可視性の層が広がったということです。企業には今まで通り、強いページ、明確なコンテンツ、読み取りやすいサイト構造が必要です。そのうえで、それらが生成回答の中で正しく解釈されているかを見る必要があります。</p>
+                <h4>企業が測るべきもの</h4>
+                <p>最初のGEO診断は、複雑である必要はありません。重要なのは、少数の指標を明確に、繰り返し測ることです。</p>
+                <p><strong>ブランドカバレッジ。</strong> 関連するAI回答の中に、自社ブランドがそもそも出てくるか。これは最も基本的な可視性指標です。カテゴリーについて聞かれているのに一度も出てこない場合、問題は表現ではなく不在です。</p>
+                <p><strong>シェア・オブ・ボイス。</strong> 自社ブランドが出てくる頻度は、競合と比べてどうか。AI可視性は相対的です。たまに言及されていても、競合がより多くのPrompt、文脈、回答エンジンで登場しているなら、存在感には差があります。</p>
+                <p><strong>推薦率。</strong> 言及と推薦は同じではありません。AIはブランドを中立的に名前だけ出すこともあれば、選択肢の一つとして紹介することも、特定用途に明確に推薦することもあります。この違いは重要です。</p>
+                <p><strong>ポジショニングの正確性。</strong> AIの説明は、自社が認識しているブランド像と一致しているか。問題は「出てこないこと」だけではありません。古いカテゴリーで説明されている、対象顧客がずれている、存在理由が伝わっていない、ということもあります。</p>
+                <p><strong>競合言及。</strong> どの競合が、どの文脈で多く出てくるか。AI回答が市場をどのようなプレイヤーで構成しているかを見ることで、自社の想定とは違う競争環境が見えることがあります。</p>
+                <p><strong>コンテンツギャップ。</strong> どの問いで、情報不足や誤解が起きているか。AI回答が曖昧だったり、第三者情報に強く依存していたりする場合、自社サイト側で明確にすべき情報が不足している可能性があります。</p>
+                <h4>最初の診断の進め方</h4>
+                <p>まずはカテゴリーを絞ります。最初からすべての問いを扱う必要はありません。一つの市場、一つの言語、一つの購買文脈から始めます。</p>
+                <p>次に、比較対象を定義します。直接競合だけでなく、隣接する代替手段や、購買者が思い浮かべやすいカテゴリーリーダーも含めます。AI回答エンジンは、社内の営業資料通りに市場を整理しているわけではありません。読める情報と、ユーザーが聞く問いをもとに整理します。</p>
+                <p>その後、購買者らしいPromptを作ります。キーワードの羅列ではなく、実際に人が相談しそうな問いにします。カテゴリー発見、比較、用途、予算、対象者、地域、判断基準などを含めると有効です。</p>
+                <p>たとえば、次のような問いです。</p>
+                <ul>
+                  <li>「マーケティングチームが、自社ブランドがAI回答に出ているかを測るにはどんなツールがあるか」</li>
+                  <li>「日本語と英語のAI検索可視性を支援できる会社はどこか」</li>
+                  <li>「B2B SaaS企業は、ChatGPTが競合を推薦しているかどう確認すべきか」</li>
+                </ul>
+                <p>次に、複数のAI回答エンジンで確認します。一つのモデルだけでは十分ではありません。システムごとに参照する情報、回答の癖、推薦の出方が異なります。</p>
+                <p>最後に、回答を保存し、比較します。一度読んで終わりにしないことが大切です。Prompt、モデル、回答本文、引用元、自社ブランドの言及、競合の言及、推薦表現、根拠として使える箇所を残します。目的は一つのPromptで勝つことではありません。パターンを見ることです。</p>
+                <h4>手作業の確認だけでは足りない理由</h4>
+                <p>手作業の確認は、感覚をつかむには役立ちます。ただ、レポートとしては不十分です。</p>
+                <p>Promptの数が多すぎます。ブランドによっては、カテゴリー、言語、購買段階ごとに数十の問いを確認する必要があります。</p>
+                <p>回答はモデルによって変わります。あるAI回答エンジンでは見えていても、別のエンジンでは出てこないことがあります。ある文脈では競合が推薦され、別の文脈では無視されることもあります。</p>
+                <p>証拠を残す必要もあります。マーケティングチームが必要としているのは、スコアだけではありません。AIが実際に何と答えたのか、その回答がなぜ重要なのかです。</p>
+                <p>そして、再現性も必要です。CMO、SEO担当、コンテンツ担当、代理店のクライアントは、その場で集めたスクリーンショットだけでは判断できません。時間を置いて比較できる、構造化されたレポートが必要です。</p>
+                <h4>GEOは可視性を測定可能なシグナルに変える</h4>
+                <p>GEOの実務的な価値は、新しい略語を増やすことではありません。漠然とした不安を、測定可能なマーケティングシグナルに変えることです。</p>
+                <p>自社は出ているのか。</p>
+                <p>正しく理解されているのか。</p>
+                <p>推薦されているのか。</p>
+                <p>競合の方が明確に説明されていないか。</p>
+                <p>これらの問いを測れるようになると、チームは具体的に動けます。コンテンツを改善し、ポジショニングを見直し、商品ページを明確にし、比較情報を整え、購買者が実際に聞く問いに答える情報源を作ることができます。</p>
+                <p>それがGEOの実務的な意味です。AIを介した発見の中で、自社がどう存在しているかを見えるようにし、次に何を改善すべきかを決めるためのものです。</p>
+                <p><em>AI回答の中で自社ブランドがどのように表示されているかを把握したい場合、UTAKATA LAB は Beacon GEO を使った AI可視性レポートを作成できます。</em></p>
+              </div>
+
+            </div>
+          </div>
+
+        </article>
+
+        <!-- ----------------------------------------
+             BLOG POST 2: Beacon GEO
+             ---------------------------------------- -->
+        <article class="blog-post" data-blog-post>
+
+          <div class="blog-post__head">
+            <time class="blog-post__date" datetime="2026-05-30">2026-05-30</time>
+            <h3 class="blog-post__title">
+              <span data-en>Beacon GEO: turning AI answers into a brand visibility report</span>
+              <span data-jp>Beacon GEO：AI回答をブランド可視性レポートに変える</span>
+            </h3>
+            <p class="blog-post__summary">
+              <span data-en>Beacon GEO helps turn buyer prompts, AI answers, and competitor mentions into a structured report for marketing and content teams.</span>
+              <span data-jp>Beacon GEOは、購買者のPrompt、AI回答、競合言及を、マーケティングチームが使える構造化レポートへ変換します。</span>
+            </p>
+          </div>
+
+          <div class="blog-post__expand" aria-hidden="true">
+            <div class="blog-post__content-inner">
+
+              <!-- EN -->
+              <div class="blog-post__content" data-en>
+                <p>Most marketing teams now have a few stories about AI answers.</p>
+                <p>Someone asked ChatGPT about the category and noticed a competitor appeared first. Someone tried Perplexity and found an outdated description of the brand. Someone asked a buyer-style question and saw that the AI recommended tools the team had not considered direct competitors.</p>
+                <p>Those moments are useful. They create urgency.</p>
+                <p>But they are not a reporting system.</p>
+                <p>A screenshot can start a conversation, but it cannot tell a team how often the issue happens, which prompts matter, which competitors are gaining visibility, or what content should be improved first.</p>
+                <p>Beacon GEO was built for that gap: turning buyer prompts, AI answers, and competitor mentions into a structured AI Visibility Report.</p>
+                <h4>What the report answers</h4>
+                <p>An AI Visibility Report should make the invisible parts of AI discovery easier to discuss.</p>
+                <p>It starts with simple questions.</p>
+                <p>Does AI mention our brand?</p>
+                <p>This is the baseline. If relevant buyer prompts do not surface the brand, the team needs to know where the absence happens: by category, use case, geography, language, or model.</p>
+                <p>Does AI recommend us?</p>
+                <p>A brand mention is not always meaningful. A recommendation signal is stronger. The report looks for moments when the AI presents the brand as a good option, a preferred choice, or a relevant solution for a specific buyer need.</p>
+                <p>Which competitors appear more often?</p>
+                <p>AI answers often reveal the competitive set that exists in the model's view of the market. Sometimes it matches the team's expectations. Sometimes it does not. Either way, it is useful evidence.</p>
+                <p>What language does AI use to describe each player?</p>
+                <p>The wording matters. AI may describe one company with concrete use cases and another with vague category language. It may connect a competitor to stronger proof points, clearer audiences, or more current terminology.</p>
+                <p>Which prompts reveal content gaps?</p>
+                <p>Some prompts produce weak answers because the available source material is thin. Others expose missing comparison pages, unclear service descriptions, outdated product language, or multilingual inconsistency. The report should point to those gaps, not just list scores.</p>
+                <h4>How Beacon GEO works</h4>
+                <p>Beacon GEO is used as the working tool behind the report. The public offer is simple: UTAKATA LAB runs a structured AI Visibility Report for a brand, category, and competitor set.</p>
+                <p>The workflow begins by defining the project. We set the brand, competitors, market, language, and category boundaries. This matters because AI visibility is always contextual. A brand may be visible in one market and absent in another. It may appear for educational prompts but not for buying prompts.</p>
+                <p>Next, we generate or import a prompt set. The prompts are written to resemble real buyer questions, not internal keyword lists. They can cover category discovery, vendor comparison, use cases, industry context, local market needs, objections, and decision criteria.</p>
+                <p>Then the prompt set is reviewed and calibrated. This step is important. A prompt that is too broad produces generic answers. A prompt that is too narrow may only confirm what the team already knows. The useful middle is specific enough to reflect buyer intent and broad enough to reveal market patterns.</p>
+                <p>After that, Beacon GEO collects answers from selected AI models. The goal is not to ask one system once. It is to create a comparable dataset across prompts, entities, and answer engines.</p>
+                <p>The answers are then analyzed for coverage, share of voice, recommendation signals, and entity comparison. This turns a pile of AI responses into a report that a marketing team can actually use.</p>
+                <p>Finally, the data and findings are exported into a practical summary: what is visible, what is missing, what competitors are associated with, and what content opportunities should be prioritized.</p>
+                <h4>What the dashboard shows</h4>
+                <p>The Beacon GEO dashboard is designed to make the report explainable.</p>
+                <p>At the aggregate level, it shows brand visibility across the selected prompt set. This helps teams understand the overall shape of the issue before reading individual answers.</p>
+                <p>The track dashboard shows how prompts, models, and entities relate to each other. A team can see where the brand appears, where competitors appear, and where answers are thin or unexpected.</p>
+                <p>Prompt evidence preserves the raw answer behind the finding. This is essential. A score without the original answer is hard to trust. The evidence allows a team to read what the AI actually said and judge whether the interpretation is useful.</p>
+                <p>Entity comparison shows how brands and competitors are described across the dataset. It helps reveal differences in positioning, proof, audience, and recommendation language.</p>
+                <p>Together, these views help the report stay grounded. The point is not to create a mysterious score. The point is to connect every finding back to real prompts and real generated answers.</p>
+                <h4>Who the report is for</h4>
+                <p>The report is useful for teams that need to make decisions about brand visibility, content, and positioning.</p>
+                <p>For a CMO or VP Marketing, it provides a concise view of whether the brand is present in AI-assisted discovery and whether competitors are being recommended more clearly.</p>
+                <p>For an SEO or GEO team, it adds a new layer of visibility measurement alongside search performance, technical health, and content coverage.</p>
+                <p>For a content marketing team, it identifies where existing content is not answering buyer questions clearly enough, and where new pages or clearer explanations may be needed.</p>
+                <p>For an agency or consultant, it creates a structured way to show clients what AI answer engines currently say and which actions are worth taking next.</p>
+                <p>For sales enablement, it can reveal how AI systems explain the category, the competitors, and the buying criteria that prospects may already have seen before a sales conversation begins.</p>
+                <h4>The useful output is not just the score</h4>
+                <p>The most useful part of an AI Visibility Report is not a single number.</p>
+                <p>It is the combination of score, evidence, and next step.</p>
+                <p>A team needs to know that the brand appeared in 30 percent of relevant prompts. But it also needs to know which prompts those were, what the answer said, how competitors were framed, and what should be changed in the brand's own content.</p>
+                <p>That is where Beacon GEO is most useful. It does not treat AI visibility as a vague impression. It turns it into something a team can read, compare, and discuss.</p>
+                <p>For some brands, the first report may show that the problem is absence. The brand is not appearing in category answers at all.</p>
+                <p>For others, the issue may be accuracy. The brand appears, but the description is old, generic, or attached to the wrong use case.</p>
+                <p>For others, the issue may be competitive framing. Competitors are recommended with clearer proof, while the brand is mentioned without a reason to choose it.</p>
+                <p>Each of those problems requires a different response. A structured report helps separate them.</p>
+                <h4>A practical first step</h4>
+                <p>Beacon GEO is not meant to make GEO feel larger than it is. It is meant to make the first step concrete.</p>
+                <p>Choose a market.</p>
+                <p>Choose a category.</p>
+                <p>Choose the buyer questions that matter.</p>
+                <p>Collect the answers, preserve the evidence, compare the entities, and decide what content or positioning should be improved.</p>
+                <p>That is enough to start.</p>
+                <p><em>If you need a first AI Visibility Report for your brand, contact UTAKATA LAB. We can help define the prompt set, run the analysis, and turn the findings into practical content and positioning recommendations.</em></p>
+              </div>
+
+              <!-- JP -->
+              <div class="blog-post__content" data-jp>
+                <p>多くのマーケティングチームは、すでにAI回答に関するいくつかの経験を持っています。</p>
+                <p>誰かがChatGPTにカテゴリーについて聞いたら、競合ブランドが先に出てきた。Perplexityで確認したら、自社ブランドが古い説明で紹介されていた。購買者に近い問いを投げたら、チームが直接競合だと思っていなかったツールが推薦されていた。</p>
+                <p>こうした瞬間は重要です。問題意識を生みます。</p>
+                <p>ただ、それだけではレポートにはなりません。</p>
+                <p>スクリーンショットは会話のきっかけになります。しかし、その問題がどれくらいの頻度で起きているのか、どのPromptが重要なのか、どの競合が可視性を得ているのか、どのコンテンツを先に改善すべきかまでは分かりません。</p>
+                <p>Beacon GEOは、その間を埋めるためのツールです。購買者のPrompt、AI回答、競合言及を、構造化されたAI可視性レポートへ変換します。</p>
+                <h4>レポートが答える問い</h4>
+                <p>AI可視性レポートは、AIを介した発見の見えにくい部分を、チームで話し合える形にするものです。</p>
+                <p>出発点は、シンプルな問いです。</p>
+                <p>AIは自社ブランドに言及しているか。</p>
+                <p>これは基本です。関連する購買者Promptで自社ブランドが出てこない場合、どこで不在が起きているのかを見る必要があります。カテゴリーなのか、用途なのか、地域なのか、言語なのか、モデルなのか。</p>
+                <p>AIは自社を推薦しているか。</p>
+                <p>ブランド名が出ることと、推薦されることは違います。推薦シグナルはより強い意味を持ちます。レポートでは、AIが自社ブランドを良い選択肢、優先候補、特定ニーズに合う解決策として提示している場面を確認します。</p>
+                <p>どの競合がより多く出ているか。</p>
+                <p>AI回答は、モデルが市場をどう見ているかを示すことがあります。チームの想定通りの場合もあれば、違う場合もあります。どちらにしても、有用な証拠になります。</p>
+                <p>AIは各ブランドをどのような言葉で説明しているか。</p>
+                <p>表現は重要です。ある企業は具体的な用途とともに説明され、別の企業は曖昧なカテゴリー語だけで説明されることがあります。競合の方が、より明確な実績、対象顧客、現在の用語と結びついている場合もあります。</p>
+                <p>どのPromptがコンテンツギャップを示しているか。</p>
+                <p>弱い回答が出るPromptは、情報源の不足を示していることがあります。比較ページがない、サービス説明が曖昧、プロダクト表現が古い、多言語で説明がそろっていない。レポートは点数だけでなく、こうした改善対象を見つけるためのものです。</p>
+                <h4>Beacon GEOの進め方</h4>
+                <p>Beacon GEOは、レポート作成のための作業ツールとして使います。外向きの提供内容はシンプルです。UTAKATA LABが、ブランド、カテゴリー、競合セットにもとづいて、構造化されたAI可視性レポートを作成します。</p>
+                <p>最初にプロジェクトを定義します。対象ブランド、競合、マーケット、言語、カテゴリーの範囲を決めます。AI可視性は常に文脈に依存します。ある市場では見えていても、別の市場では見えていないことがあります。教育的な問いでは出てきても、購買に近い問いでは出てこないこともあります。</p>
+                <p>次に、Promptセットを生成または取り込みます。Promptは、社内のキーワード一覧ではなく、実際の購買者が聞きそうな問いとして設計します。カテゴリー発見、ベンダー比較、用途、業界文脈、地域ニーズ、懸念点、判断基準などを含めることができます。</p>
+                <p>その後、Promptセットをレビューし、調整します。ここは重要です。広すぎるPromptは一般的な回答しか生みません。狭すぎるPromptは、チームがすでに知っていることだけを確認してしまいます。買い手の意図を反映しながら、市場のパターンが見える粒度に整える必要があります。</p>
+                <p>次に、選択したAIモデルから回答を収集します。一つのシステムに一度聞くだけではありません。Prompt、ブランド、競合、回答エンジンを比較できるデータセットを作ります。</p>
+                <p>集めた回答は、カバレッジ、シェア・オブ・ボイス、推薦シグナル、エンティティ比較の観点で分析します。これにより、大量のAI回答が、マーケティングチームが使えるレポートに変わります。</p>
+                <p>最後に、データと所見を実務的な要約に整理します。何が見えているのか、何が欠けているのか、競合は何と結びついているのか、どのコンテンツ機会を優先すべきかを明確にします。</p>
+                <h4>ダッシュボードで見るもの</h4>
+                <p>Beacon GEOのダッシュボードは、レポートの説明可能性を高めるために設計されています。</p>
+                <p>集計ビューでは、選択したPromptセット全体におけるブランド可視性を確認できます。個別回答を読む前に、問題の全体像を把握するためのものです。</p>
+                <p>トラックダッシュボードでは、Prompt、モデル、ブランド、競合の関係を見ます。どこで自社が出ているのか、どこで競合が出ているのか、どの回答が薄いのか、想定外なのかを確認できます。</p>
+                <p>Promptごとの証拠では、分析結果のもとになった実際のAI回答を保存します。これは欠かせません。元の回答がないスコアは信頼しにくいからです。チームはAIが実際に何と言ったのかを読み、その解釈が妥当かを判断できます。</p>
+                <p>エンティティ比較では、データセット全体でブランドと競合がどのように説明されているかを見ます。ポジショニング、根拠、対象顧客、推薦表現の差が見えます。</p>
+                <p>これらのビューを合わせることで、レポートは地に足のついたものになります。目的は、謎めいたスコアを作ることではありません。すべての所見を、実際のPromptと実際の生成回答に結びつけることです。</p>
+                <h4>誰のためのレポートか</h4>
+                <p>このレポートは、ブランド可視性、コンテンツ、ポジショニングについて意思決定するチームに向いています。</p>
+                <p>CMOやVP Marketingにとっては、AIを介した発見の中で自社ブランドが存在しているか、競合の方が明確に推薦されていないかを短時間で把握する材料になります。</p>
+                <p>SEO/GEOチームにとっては、検索パフォーマンス、技術健全性、コンテンツカバレッジに加えて、新しい可視性レイヤーを測る方法になります。</p>
+                <p>コンテンツマーケティングチームにとっては、既存コンテンツが購買者の問いに十分答えられていない箇所や、新しいページ、より明確な説明が必要な箇所を見つける手がかりになります。</p>
+                <p>代理店やコンサルタントにとっては、AI回答エンジンが現時点で何を言っているか、次にどの施策を取るべきかをクライアントに示すための構造になります。</p>
+                <p>営業支援の観点でも有効です。見込み顧客が商談前にすでに見ているかもしれない、カテゴリー説明、競合比較、判断基準を把握できます。</p>
+                <h4>価値があるのはスコアだけではない</h4>
+                <p>AI可視性レポートで最も大切なのは、一つの数字ではありません。</p>
+                <p>スコア、証拠、次のアクションがそろっていることです。</p>
+                <p>たとえば、関連Promptの30パーセントで自社ブランドが出ていると分かったとします。ただ、それだけでは不十分です。どのPromptで出たのか、AIは何と答えたのか、競合はどう説明されたのか、自社コンテンツの何を変えるべきなのかまで見える必要があります。</p>
+                <p>Beacon GEOが役立つのは、この部分です。AI可視性を感覚的な印象として扱うのではなく、チームが読み、比較し、話し合えるものに変えます。</p>
+                <p>あるブランドでは、最初のレポートで「不在」が問題だと分かるかもしれません。カテゴリー回答の中に、そもそも出てこない。</p>
+                <p>別のブランドでは、「正確性」が問題かもしれません。ブランドは出ているが、説明が古い、一般的すぎる、または間違った用途と結びついている。</p>
+                <p>また別のブランドでは、「競合との見え方」が問題かもしれません。競合は明確な根拠とともに推薦されている一方、自社は名前だけ出ていて選ばれる理由が示されていない。</p>
+                <p>それぞれの問題には、違う対応が必要です。構造化されたレポートは、その違いを分けて考えるためにあります。</p>
+                <h4>最初の一歩を具体的にする</h4>
+                <p>Beacon GEOは、GEOを必要以上に大きく見せるためのものではありません。最初の一歩を具体的にするためのものです。</p>
+                <p>市場を一つ選ぶ。</p>
+                <p>カテゴリーを一つ選ぶ。</p>
+                <p>重要な購買者の問いを選ぶ。</p>
+                <p>回答を集め、証拠を残し、ブランドと競合を比較し、どのコンテンツやポジショニングを改善すべきかを決める。</p>
+                <p>まずはそれで十分です。</p>
+                <p><em>自社ブランドの AI可視性レポートが必要な場合は、UTAKATA LAB までご相談ください。Prompt設計、分析実行、コンテンツ改善・ポジショニング改善の提案まで支援できます。</em></p>
+              </div>
+
+            </div>
+          </div>
+
+        </article>
 
         <!-- ----------------------------------------
              BLOG POST 1: What does an AI say about your brand?
@@ -1410,7 +2209,7 @@
             <time class="blog-post__date" datetime="2026-05-22">2026-05-22</time>
             <h3 class="blog-post__title">
               <span data-en>What does an AI say about your brand?</span>
-              <span data-jp hidden>あなたのブランドについて、AIは何と言うか</span>
+              <span data-jp>あなたのブランドについて、AIは何と言うか</span>
             </h3>
           </div>
 
@@ -1441,30 +2240,39 @@
               </div>
 
               <!-- JP -->
-              <div class="blog-post__content" data-jp hidden>
+              <div class="blog-post__content" data-jp>
                 <p>AI時代のブランド価値を、検索から「対話」へ最適化するデジタルマーケティングラボ。</p>
                 <p>現代の検索行動は、リンクのクリックから「AIとの会話」へと劇的に変化しています。ユーザーが製品やブランドを比較・評価する際、AIの回答の中にあなたのブランドが正しく、かつ魅力的に存在しているかどうかが、ビジネスの成否を分ける鍵となります。</p>
                 <p>UTAKATA LABは、LLM（大規模言語モデル）の特性を深く理解し、貴社のブランドコンテンツをAIが正確に解釈・引用・推薦できるように最適化する「LLMO（LLM最適化）」の専門家集団です。私たちは、人間が読んでも魅力的であり、同時にAIが最も正しく価値を理解できる「二重の最適化」を実現し、次世代のマーケティング基盤を構築します。</p>
                 <h4>当社の強み：世界基準のインサイトとブランド戦略</h4>
                 <p>当社のコンサルティングチームは、世界最大手のIT調査・分析機関での技術・トレンド分析経験と、グローバルFMCG（日用消費財）ブランドのマネジメント経験を有するプロフェッショナルで構成されています。</p>
                 <p>AI技術の進化に対する深い洞察と、世界規模で愛されるブランドを構築してきた知見を融合し、論理と感性の両面から貴社のブランド価値を最大化します。</p>
-                <h4>サービスメニュー</h4>
-                <p>UTAKATA LABでは、ブランドの課題に合わせて以下のサービスを提供しています。</p>
-                <p><strong>1. LLMO（LLM最適化）コンサルティング</strong></p>
-                <p>AIに対してあなたのブランドの「正体」を正確に伝えるための戦略策定・改善を行います。</p>
+                <h4>サービス内容</h4>
+                <p>現代の検索行動は、リンクのクリックから「AIとの対話」へ移行しています。ユーザーがAIに「おすすめの製品は？」と尋ねたとき、貴社のブランドは正しく表示・推薦されていますか？</p>
+                <p>私たちは、世界最大手のIT調査・分析機関でのトレンド分析経験と、グローバルFMCG（日用消費財）ブランドのマネジメント経験を融合させた、LLMO専門チーム「UTAKATA LAB」です。「なんとなくの要約」ではなく、貴社が意図した通りの正確なブランド価値をAIに構築し、AI生成時代における「選ばれるブランド」作りを支援します。</p>
+                <p><strong>1. 提供内容</strong></p>
                 <ul>
-                  <li><strong>コンテンツ・コピーライティング最適化：</strong>AIに誤解されない、明確な主張と具体的詳細を持つ構造への書き換え。</li>
-                  <li><strong>サイト構造・メタデータ設計：</strong>AIが巡回・解釈しやすいウェブサイト設計、情報構造の最適化。</li>
-                  <li><strong>多言語ブランド整合性管理：</strong>日英中の言語間での表現のばらつきを排除し、AI上でのブランド評価を一貫させる。</li>
+                  <li><strong>戦略コンサルティング（2時間）：</strong>現状のAI認識ギャップを特定し、改善戦略を設計します。</li>
+                  <li><strong>LLMO最適化ガイド：</strong>AIが理解・引用しやすいHTML構造・メタデータ設計の最適化指示書を提供します。</li>
+                  <li><strong>多言語ブランド整合性管理：</strong>言語間での表現のばらつきを排除し、一貫したブランド評価を確立します。</li>
+                  <li><strong>効果検証レポート：</strong>最適化後のAI回答への反映度を分析し、レポートとして提出します。</li>
                 </ul>
-                <p><strong>2. AI対応型インタラクティブコンテンツ開発</strong></p>
-                <p>「ユーザーの体験」と「AIの読み取り」を両立させる、高機能な動的コンテンツを開発します。</p>
+                <p><strong>2. UTAKATAが選ばれる理由</strong></p>
                 <ul>
-                  <li><strong>診断・テストツール構築：</strong>パーソナリティテストやブランド診断ツールなど、人間にとって面白く、かつAIがデータ構造を理解しやすいコンテンツの開発。</li>
-                  <li><strong>AI最適化FAQ・ブランドツール：</strong>ユーザーの疑問を即座に解決し、AIが回答の根拠として引用しやすいデータベース構造の設計。</li>
+                  <li><strong>プロフェッショナルな背景：</strong>IT調査機関の分析力 × グローバルブランドマーケティング提案力</li>
+                  <li><strong>二重の最適化：</strong>「人間にとっての魅力」と「AIにとっての理解しやすさ」を両立させます。</li>
+                  <li><strong>多言語対応：</strong>グローバル市場でのブランド価値を一貫して管理・最適化します。</li>
                 </ul>
-                <p><strong>3. ブランド評価診断（初期診断）</strong></p>
-                <p>まずは「AIからあなたのブランドがどう見えているか」を客観的なレポートで提示します。主要なAIツールに対するブランドの認識度、回答に含まれる正確性、および競合と比較した際の優位性の現状を調査・分析します。</p>
+                <p><strong>3. ワークフロー（納品までのプロセス）</strong></p>
+                <p>初めての方でも安心して進められるよう、以下のプロセスで伴走します。</p>
+                <ul>
+                  <li>STEP 1：現状診断（AIが現在、あなたのブランドをどう解釈しているか分析）</li>
+                  <li>STEP 2：戦略設計（ブランドの核となる叙事・用語の定義）</li>
+                  <li>STEP 3：コンテンツ最適化（HTMLガイドおよび語彙ライブラリの納品）</li>
+                  <li>STEP 4：検証と改善（パフォーマンスのモニタリングとレポート提出）</li>
+                </ul>
+                <p><strong>4. なぜ今、LLMOなのか？（ブランド防衛の重要性）</strong></p>
+                <p>検索エンジン最適化はAI時代における「ブランドの誤認」を防ぐことはできません。ユーザーがAIに「〇〇というサービスはどう？」と尋ねた際、正確な情報を届かせます。</p>
               </div>
 
             </div>
@@ -1493,27 +2301,27 @@
 
       <p class="section__label">
         <span data-en>Contact</span>
-        <span data-jp hidden>お問い合わせ</span>
+        <span data-jp>お問い合わせ</span>
       </p>
 
       <h2 id="contact-heading" class="contact__headline">
         <span data-en>Let's think together.</span>
-        <span data-jp hidden>一緒に考えましょう。</span>
+        <span data-jp>一緒に考えましょう。</span>
       </h2>
 
       <p class="contact__sub">
         <span data-en>For collaboration, consulting, or conversation — reach out.</span>
-        <span data-jp hidden>コラボレーション、コンサルティング、またはご相談は、お気軽にどうぞ。</span>
+        <span data-jp>コラボレーション、コンサルティング、またはご相談は、お気軽にどうぞ。</span>
       </p>
 
       <a href="https://coconala.com/services/4232239" target="_blank" rel="noopener noreferrer" class="btn btn--primary" style="background: var(--color-accent); color: var(--color-bg);">
         <span data-en>Get in touch →</span>
-        <span data-jp hidden>連絡する →</span>
+        <span data-jp>連絡する →</span>
       </a>
 
       <a href="mailto:utakatalab.hello@gmail.com" class="contact__email">
         <span data-en>or email utakatalab.hello@gmail.com</span>
-        <span data-jp hidden>またはメールで utakatalab.hello@gmail.com</span>
+        <span data-jp>またはメールで utakatalab.hello@gmail.com</span>
       </a>
 
     </div>
@@ -1528,7 +2336,7 @@
 
       <p class="footer__copy">
         <span data-en>© 2026 UTAKATA LAB</span>
-        <span data-jp hidden>© 2026 ウタカタ・ラボ</span>
+        <span data-jp>© 2026 ウタカタ・ラボ</span>
       </p>
 
       <div class="footer__social">
@@ -1543,8 +2351,7 @@
           </svg>
         </a>
 
-        <!-- GitHub — replace [your-github] with your handle before publishing -->
-        <a href="https://github.com/[your-github]"
+        <a href="https://github.com/wayneyuan33/utakata-lab"
            target="_blank"
            rel="noopener noreferrer"
            aria-label="GitHub">
@@ -1591,38 +2398,36 @@
     const langToggle = document.getElementById('lang-toggle');
     const html = document.documentElement;
 
-    langToggle.addEventListener('click', () => {
-      const current = html.getAttribute('data-lang');
-      const next = current === 'en' ? 'jp' : 'en';
-
-      html.setAttribute('data-lang', next);
-      html.setAttribute('lang', next === 'jp' ? 'ja' : 'en');
+    function setLanguage(next) {
+      const lang = next === 'jp' ? 'jp' : 'en';
+      html.setAttribute('data-lang', lang);
+      html.setAttribute('lang', lang === 'jp' ? 'ja' : 'en');
 
       // Update page title
       const titleEl = document.querySelector('title');
       if (titleEl) {
-        titleEl.textContent = next === 'jp'
+        titleEl.textContent = lang === 'jp'
           ? titleEl.dataset.jpTitle
           : titleEl.dataset.enTitle;
       }
 
       // Update toggle button visual state
       document.querySelectorAll('.lang-option').forEach(opt => {
-        opt.classList.toggle('active', opt.dataset.langLabel === next);
+        opt.classList.toggle('active', opt.dataset.langLabel === lang);
       });
 
-      localStorage.setItem('utakata-lang', next);
+      localStorage.setItem('utakata-lang', lang);
+      window.dispatchEvent(new CustomEvent('utakata:languagechange', { detail: { lang } }));
+    }
+
+    langToggle.addEventListener('click', () => {
+      const current = html.getAttribute('data-lang');
+      setLanguage(current === 'en' ? 'jp' : 'en');
     });
 
     // Restore saved language preference on load
     const savedLang = localStorage.getItem('utakata-lang');
-    if (savedLang && savedLang !== 'en') {
-      html.setAttribute('data-lang', savedLang);
-      html.setAttribute('lang', savedLang === 'jp' ? 'ja' : 'en');
-      document.querySelectorAll('.lang-option').forEach(opt => {
-        opt.classList.toggle('active', opt.dataset.langLabel === savedLang);
-      });
-    }
+    if (savedLang) setLanguage(savedLang);
 
 
     /* ==============================================
@@ -1764,6 +2569,135 @@
 
 
     /* ==============================================
+       BEACON GEO CAROUSEL
+       ============================================== */
+    document.querySelectorAll('[data-beacon-carousel]').forEach(carousel => {
+      const track = carousel.querySelector('.beacon-carousel__track');
+      const slides = carousel.querySelectorAll('.beacon-carousel__slide');
+      const dots = carousel.querySelectorAll('.beacon-carousel__dot');
+      const prevBtn = carousel.querySelector('.beacon-carousel__btn--prev');
+      const nextBtn = carousel.querySelector('.beacon-carousel__btn--next');
+      const titleEl = carousel.querySelector('[data-beacon-title]');
+      const captionEl = carousel.querySelector('[data-beacon-caption]');
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const slideData = [
+        {
+          en: {
+            title: 'Prompt Strategy',
+            caption: 'Start from real buyer questions, not generic keywords.'
+          },
+          jp: {
+            title: 'Prompt設計',
+            caption: '一般的なキーワードではなく、実際の購買者に近い問いから始めます。'
+          }
+        },
+        {
+          en: {
+            title: 'AI Answer Capture',
+            caption: 'Collect answers across selected models and markets.'
+          },
+          jp: {
+            title: 'AI回答収集',
+            caption: '選択したモデルと市場ごとに、AI回答を収集します。'
+          }
+        },
+        {
+          en: {
+            title: 'Visibility Metrics',
+            caption: 'Measure Coverage, Share of Voice, and Recommendation Rate.'
+          },
+          jp: {
+            title: '可視性指標',
+            caption: 'カバレッジ、シェア・オブ・ボイス、推薦率を測定します。'
+          }
+        },
+        {
+          en: {
+            title: 'Report Output',
+            caption: 'Compare entities, preserve evidence, and identify content opportunities.'
+          },
+          jp: {
+            title: 'レポート出力',
+            caption: 'エンティティを比較し、証拠を残し、コンテンツ改善機会を見つけます。'
+          }
+        }
+      ];
+      let current = 0;
+      let timerId = null;
+      let touchStartX = 0;
+      let touchDeltaX = 0;
+
+      function goTo(index) {
+        current = (index + slides.length) % slides.length;
+        track.style.transform = `translateX(-${current * 100}%)`;
+        slides.forEach((slide, i) => slide.setAttribute('aria-hidden', String(i !== current)));
+        dots.forEach((dot, i) => {
+          if (i === current) {
+            dot.setAttribute('aria-current', 'true');
+          } else {
+            dot.removeAttribute('aria-current');
+          }
+        });
+        const lang = html.getAttribute('data-lang') === 'jp' ? 'jp' : 'en';
+        if (titleEl) titleEl.textContent = slideData[current][lang].title;
+        if (captionEl) captionEl.textContent = slideData[current][lang].caption;
+      }
+
+      function startAutoAdvance() {
+        if (prefersReducedMotion || slides.length < 2) return;
+        stopAutoAdvance();
+        timerId = window.setInterval(() => goTo(current + 1), 4800);
+      }
+
+      function stopAutoAdvance() {
+        if (timerId) {
+          window.clearInterval(timerId);
+          timerId = null;
+        }
+      }
+
+      prevBtn.addEventListener('click', () => {
+        goTo(current - 1);
+        startAutoAdvance();
+      });
+      nextBtn.addEventListener('click', () => {
+        goTo(current + 1);
+        startAutoAdvance();
+      });
+      dots.forEach((dot, i) => {
+        dot.addEventListener('click', () => {
+          goTo(i);
+          startAutoAdvance();
+        });
+      });
+
+      carousel.addEventListener('mouseenter', stopAutoAdvance);
+      carousel.addEventListener('mouseleave', startAutoAdvance);
+      carousel.addEventListener('focusin', stopAutoAdvance);
+      carousel.addEventListener('focusout', startAutoAdvance);
+      carousel.addEventListener('touchstart', e => {
+        touchStartX = e.touches[0].clientX;
+        touchDeltaX = 0;
+        stopAutoAdvance();
+      }, { passive: true });
+      carousel.addEventListener('touchmove', e => {
+        touchDeltaX = touchStartX - e.touches[0].clientX;
+      }, { passive: true });
+      carousel.addEventListener('touchend', () => {
+        if (Math.abs(touchDeltaX) > 40) {
+          goTo(touchDeltaX > 0 ? current + 1 : current - 1);
+        }
+        touchDeltaX = 0;
+        startAutoAdvance();
+      });
+      window.addEventListener('utakata:languagechange', () => goTo(current));
+
+      goTo(0);
+      startAutoAdvance();
+    });
+
+
+    /* ==============================================
        PORTFOLIO CARDS — mobile tap to expand
        ============================================== */
     document.querySelectorAll('[data-card]').forEach(card => {
@@ -1781,18 +2715,28 @@
 
 
     /* ==============================================
-       BLOG POSTS — mobile tap to expand
-       (desktop uses CSS :hover via grid-template-rows)
+       BLOG POSTS — click/tap to expand
        ============================================== */
     document.querySelectorAll('[data-blog-post]').forEach(post => {
       const head   = post.querySelector('.blog-post__head');
       const expand = post.querySelector('.blog-post__expand');
       if (!head) return;
 
-      head.addEventListener('click', () => {
-        if (window.matchMedia('(hover: none)').matches) {
-          const isOpen = post.classList.toggle('is-open');
-          if (expand) expand.setAttribute('aria-hidden', String(!isOpen));
+      head.setAttribute('role', 'button');
+      head.setAttribute('tabindex', '0');
+      head.setAttribute('aria-expanded', 'false');
+
+      function togglePost() {
+        const isOpen = post.classList.toggle('is-open');
+        if (expand) expand.setAttribute('aria-hidden', String(!isOpen));
+        head.setAttribute('aria-expanded', String(isOpen));
+      }
+
+      head.addEventListener('click', togglePost);
+      head.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          togglePost();
         }
       });
     });
