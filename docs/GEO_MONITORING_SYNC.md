@@ -4,13 +4,13 @@
 
 | Item | Value |
 |---|---|
-| Source repo | `C:\dev\geo-monitoring-app` |
-| Source file | `outputs/GEO_Monitoring_Report_Sample_Anonymized.pdf` |
-| Dest in HP repo | `case-folder/beacon-geo-report/beacon-geo-example-report.pdf` |
+| Source repo | `UTAKATA HP` |
+| Source file | `case-folder/beacon-geo-report/beacon-geo-report-Sample-en.pdf` |
+| Dest in HP repo | `case-folder/beacon-geo-report/beacon-geo-report-Sample-en.pdf` |
 | Trigger | New anonymized sample after a Beacon GEO product release |
 | Verification | Open the homepage Beacon GEO secondary CTA in a new tab and confirm the PDF loads |
 
-Step 0 on 2026-06-01 returned `False` for the source file path and `True` for the HP destination PDF. If the product repo moves the sample, update both this file and the product repo docs before copying.
+2026-06-01 update: the homepage CTA uses `case-folder/beacon-geo-report/beacon-geo-report-Sample-en.pdf`; the old geo-monitoring output path is no longer used.
 
 ## JP - 同期メモ
 
@@ -21,14 +21,11 @@ Step 0 on 2026-06-01 returned `False` for the source file path and `True` for th
 From the HP repo root:
 
 ```powershell
-$source = "C:\dev\geo-monitoring-app\outputs\GEO_Monitoring_Report_Sample_Anonymized.pdf"
-$dest = ".\case-folder\beacon-geo-report\beacon-geo-example-report.pdf"
-Test-Path $source
-Test-Path $dest
-Copy-Item -LiteralPath $source -Destination $dest -Force
+$pdf = ".\case-folder\beacon-geo-report\beacon-geo-report-Sample-en.pdf"
+Test-Path $pdf
 ```
 
-Only run `Copy-Item` when the source path exists and the sample is approved for public anonymized distribution.
+Only replace this PDF when the sample is approved for public anonymized distribution.
 
 ## Verification
 

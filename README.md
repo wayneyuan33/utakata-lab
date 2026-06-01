@@ -51,7 +51,7 @@ Then open `http://localhost:3000/` and test the Beacon GEO module, language togg
 │   └── create_beacon_geo_ads.py
 └── case-folder/
     ├── beacon-geo-report/
-    │   ├── beacon-geo-example-report.pdf
+    │   ├── beacon-geo-report-Sample-en.pdf
     │   ├── beacon-geo-ad-01-keyword-map.png
     │   ├── beacon-geo-ad-02-ai-answer-capture.png
     │   ├── beacon-geo-ad-03-visibility-metrics.png

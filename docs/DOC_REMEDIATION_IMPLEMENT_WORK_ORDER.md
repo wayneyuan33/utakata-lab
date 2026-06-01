@@ -45,8 +45,7 @@ Confirm workspace is UTAKATA HP, not `geo-monitoring-app`.
 Verify sample PDF source (adjust path in docs if missing):
 
 ```powershell
-Test-Path "C:\dev\geo-monitoring-app\outputs\GEO_Monitoring_Report_Sample_Anonymized.pdf"
-Test-Path ".\case-folder\beacon-geo-report\beacon-geo-example-report.pdf"
+Test-Path ".\case-folder\beacon-geo-report\beacon-geo-report-Sample-en.pdf"
 ```
 
 Search before deleting old ad image:

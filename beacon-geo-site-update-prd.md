@@ -169,13 +169,13 @@ Download Example Report
 - 示例报告 PDF 已提供，开发输入源文件为：
 
 ```text
-outputs/GEO_Monitoring_Report_Sample_Anonymized.pdf
+case-folder/beacon-geo-report/beacon-geo-report-Sample-en.pdf
 ```
 
 - 开发需要将该 PDF 复制/重命名到项目静态发布路径：
 
 ```text
-case-folder/beacon-geo-report/beacon-geo-example-report.pdf
+case-folder/beacon-geo-report/beacon-geo-report-Sample-en.pdf
 ```
 
 - 按钮必须使用明确的 `href` 指向上述静态发布路径。
@@ -246,8 +246,8 @@ AIが回答する購買者の質問をマッピングします。
 - 页面中第一张 Beacon GEO 示意图显示 `KEYWORD MAP`，不再显示 `PROMPT MAP`。
 - 第一张 carousel 的 title / caption / alt / aria-label / JS metadata 使用 Keyword Map 口径，并包含 EN/JP 对应文案。
 - Beacon GEO 模块次级按钮显示 `Download Example Report` / `サンプルレポートをダウンロード`。
-- 示例报告 PDF 源文件 `outputs/GEO_Monitoring_Report_Sample_Anonymized.pdf` 已被放入静态发布路径 `case-folder/beacon-geo-report/beacon-geo-example-report.pdf`。
-- 按钮 href 指向 `case-folder/beacon-geo-report/beacon-geo-example-report.pdf`。
+- 示例报告 PDF 源文件 `case-folder/beacon-geo-report/beacon-geo-report-Sample-en.pdf` 已被放入静态发布路径 `case-folder/beacon-geo-report/beacon-geo-report-Sample-en.pdf`。
+- 按钮 href 指向 `case-folder/beacon-geo-report/beacon-geo-report-Sample-en.pdf`。
 - 点击按钮在新标签页正常打开 PDF，浏览器 PDF viewer 支持下载，不出现 404。
 - 英日双语切换后，导航与按钮文案显示正常。
 - 桌面端和移动端没有导航换行遮挡、按钮溢出、图片裁切异常。
@@ -268,8 +268,8 @@ AIが回答する購買者の質問をマッピングします。
    - 已确认默认使用新图片文件 `beacon-geo-ad-01-keyword-map.png`，降低旧图缓存风险。
 
 3. **PDF 路径与交付方式**
-   - 已确认 PDF 样本已提供，源文件为 `outputs/GEO_Monitoring_Report_Sample_Anonymized.pdf`。
-   - 开发需将该样本放入项目静态资源目录：`case-folder/beacon-geo-report/beacon-geo-example-report.pdf`。
+   - 已确认 PDF 样本已提供，源文件为 `case-folder/beacon-geo-report/beacon-geo-report-Sample-en.pdf`。
+   - 开发需将该样本放入项目静态资源目录：`case-folder/beacon-geo-report/beacon-geo-report-Sample-en.pdf`。
    - 页面 CTA href 必须指向该静态发布路径。
 
 4. **PDF 打开方式**
@@ -278,7 +278,7 @@ AIが回答する購買者の質問をマッピングします。
    - 技术实现使用 `target="_blank"` + `rel="noopener"`，不强制加 `download`。
 
 5. **示例报告文件名**
-   - 默认使用：`beacon-geo-example-report.pdf`
+   - 默认使用：`beacon-geo-report-Sample-en.pdf`
    - 文件名应保持英文、无空格，便于静态站部署和链接维护。
 
 ---
@@ -289,7 +289,7 @@ AIが回答する購買者の質問をマッピングします。
 
 PDF 样本已经提供，主要风险从“文件未完成”变为“源文件没有复制到页面引用的静态发布路径”，从而导致 404。
 
-**Mitigation:** 开发必须将 `outputs/GEO_Monitoring_Report_Sample_Anonymized.pdf` 放入 `case-folder/beacon-geo-report/beacon-geo-example-report.pdf`，并在发布前验证 CTA 可打开该 PDF。
+**Mitigation:** 开发必须将 `case-folder/beacon-geo-report/beacon-geo-report-Sample-en.pdf` 放入 `case-folder/beacon-geo-report/beacon-geo-report-Sample-en.pdf`，并在发布前验证 CTA 可打开该 PDF。
 
 ### Risk 2: `Keyword Map` 与产品真实方法论不完全一致
 
@@ -327,4 +327,4 @@ Beacon GEO 实际测量的是 prompts / buyer questions / AI answer scenarios，
 
 - Navigation: `index.html` includes a Beacon GEO nav link targeting `#beacon-geo`.
 - Keyword Map asset: the first carousel visual uses `case-folder/beacon-geo-report/beacon-geo-ad-01-keyword-map.png`.
-- PDF CTA: `index.html` links `Download Example Report` to `case-folder/beacon-geo-report/beacon-geo-example-report.pdf` with `target="_blank"` and `rel="noopener"`.
+- PDF CTA: `index.html` links `Download Example Report` to `case-folder/beacon-geo-report/beacon-geo-report-Sample-en.pdf` with `target="_blank"` and `rel="noopener"`.

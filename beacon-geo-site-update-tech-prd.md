@@ -83,7 +83,7 @@
 目标 href 固定为示例报告 PDF 的静态发布路径：
 
 ```text
-case-folder/beacon-geo-report/beacon-geo-example-report.pdf
+case-folder/beacon-geo-report/beacon-geo-report-Sample-en.pdf
 ```
 
 ### 2.4 Current Image Asset
@@ -256,20 +256,20 @@ PROMPT MAP
 源文件：
 
 ```text
-outputs/GEO_Monitoring_Report_Sample_Anonymized.pdf
+case-folder/beacon-geo-report/beacon-geo-report-Sample-en.pdf
 ```
 
 静态发布路径：
 
 ```text
-case-folder/beacon-geo-report/beacon-geo-example-report.pdf
+case-folder/beacon-geo-report/beacon-geo-report-Sample-en.pdf
 ```
 
 目标实现为新标签页预览，并支持用户在浏览器 PDF viewer 中下载：
 
 ```html
 <a
-  href="case-folder/beacon-geo-report/beacon-geo-example-report.pdf"
+  href="case-folder/beacon-geo-report/beacon-geo-report-Sample-en.pdf"
   class="btn btn--secondary"
   target="_blank"
   rel="noopener"
@@ -290,8 +290,8 @@ case-folder/beacon-geo-report/beacon-geo-example-report.pdf
 ```text
 index.html
 case-folder/beacon-geo-report/beacon-geo-ad-01-keyword-map.png
-outputs/GEO_Monitoring_Report_Sample_Anonymized.pdf
-case-folder/beacon-geo-report/beacon-geo-example-report.pdf
+case-folder/beacon-geo-report/beacon-geo-report-Sample-en.pdf
+case-folder/beacon-geo-report/beacon-geo-report-Sample-en.pdf
 ```
 
 ### Source / Reference Only
@@ -317,8 +317,8 @@ case-folder/beacon-geo-report/beacon-geo-ad-01-prompt-strategy.png
 
 ### Functional QA
 
-- `outputs/GEO_Monitoring_Report_Sample_Anonymized.pdf` 已复制/重命名到 `case-folder/beacon-geo-report/beacon-geo-example-report.pdf`。
-- CTA href 指向 `case-folder/beacon-geo-report/beacon-geo-example-report.pdf`。
+- `case-folder/beacon-geo-report/beacon-geo-report-Sample-en.pdf` 已复制/重命名到 `case-folder/beacon-geo-report/beacon-geo-report-Sample-en.pdf`。
+- CTA href 指向 `case-folder/beacon-geo-report/beacon-geo-report-Sample-en.pdf`。
 - 点击 CTA 在新标签页打开 PDF，浏览器 PDF viewer 支持下载。
 - 浏览器控制台无资源 404。
 - `index.html` 中没有残留可见文案 `What we measure`。
@@ -354,12 +354,12 @@ case-folder/beacon-geo-report/beacon-geo-ad-01-prompt-strategy.png
 已确认：
 
 ```text
-PDF 样本已提供，源文件为 outputs/GEO_Monitoring_Report_Sample_Anonymized.pdf
+PDF 样本已提供，源文件为 case-folder/beacon-geo-report/beacon-geo-report-Sample-en.pdf
 开发需将该 PDF 放入项目静态资源目录
-最终发布路径固定为 case-folder/beacon-geo-report/beacon-geo-example-report.pdf
+最终发布路径固定为 case-folder/beacon-geo-report/beacon-geo-report-Sample-en.pdf
 ```
 
-技术要求：CTA href 必须指向 `case-folder/beacon-geo-report/beacon-geo-example-report.pdf`。不得指向 `outputs/`，因为 `outputs/` 不是页面静态资源目录。
+技术要求：CTA href 必须指向 `case-folder/beacon-geo-report/beacon-geo-report-Sample-en.pdf`。不得指向 `outputs/`，因为 `outputs/` 不是页面静态资源目录。
 
 ### Decision 2: PDF 打开方式
 
@@ -415,7 +415,7 @@ AIが回答する購買者の質問をマッピングします。
 
 PDF 样本已存在，但如果只保留在 `outputs/`，页面发布时仍可能找不到该文件；CTA 指向错误目录也会出现 404。
 
-**Mitigation:** 开发必须将 `outputs/GEO_Monitoring_Report_Sample_Anonymized.pdf` 复制/重命名到 `case-folder/beacon-geo-report/beacon-geo-example-report.pdf`，CTA 只能指向后者，并在发布前检查该路径可访问。
+**Mitigation:** 开发必须将 `case-folder/beacon-geo-report/beacon-geo-report-Sample-en.pdf` 复制/重命名到 `case-folder/beacon-geo-report/beacon-geo-report-Sample-en.pdf`，CTA 只能指向后者，并在发布前检查该路径可访问。
 
 ### Risk 3: Header fixed 导航锚点遮挡
 
@@ -455,6 +455,6 @@ PDF 样本已存在，但如果只保留在 `outputs/`，页面发布时仍可�
 2. 修改 `index.html` 顶部导航。
 3. 修改 CTA 文案与 PDF 链接。
 4. 同步 alt / carousel metadata。
-5. 将 `outputs/GEO_Monitoring_Report_Sample_Anonymized.pdf` 复制/重命名为 `case-folder/beacon-geo-report/beacon-geo-example-report.pdf`。
+5. 将 `case-folder/beacon-geo-report/beacon-geo-report-Sample-en.pdf` 复制/重命名为 `case-folder/beacon-geo-report/beacon-geo-report-Sample-en.pdf`。
 6. 本地打开 `index.html` 做视觉检查。
 7. 发布前检查无 404、无残留旧文案、移动端无布局破损。

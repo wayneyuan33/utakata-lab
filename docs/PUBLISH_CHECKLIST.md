@@ -7,7 +7,7 @@ Use this before publishing to GitHub Pages, Vercel, or any static host.
 - [ ] `index.html` opens locally without console errors.
 - [ ] All `img` paths under `case-folder/` resolve with no 404.
 - [ ] All `a href` links under `case-folder/` resolve with no 404.
-- [ ] `case-folder/beacon-geo-report/beacon-geo-example-report.pdf` opens from the Beacon GEO CTA.
+- [ ] `case-folder/beacon-geo-report/beacon-geo-report-Sample-en.pdf` opens from the Beacon GEO CTA.
 - [ ] EN/JP toggle works on nav, Beacon GEO, blogs, and contact.
 - [ ] `og:title` and `og:description` are present.
 - [ ] `og:image` is present and uses an absolute URL. Current assumption: `https://wayneyuan33.github.io/utakata-lab/hero-illustration.png`.
@@ -24,7 +24,7 @@ Use this before publishing to GitHub Pages, Vercel, or any static host.
 
 The homepage CTA label is `Download Example Report`. It should open:
 
-`case-folder/beacon-geo-report/beacon-geo-example-report.pdf`
+`case-folder/beacon-geo-report/beacon-geo-report-Sample-en.pdf`
 
 A browser PDF viewer is acceptable. The requirement is that the new tab loads the PDF rather than a 404.
 

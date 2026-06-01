@@ -129,7 +129,7 @@ Checkbox list including:
 
 - [ ] `index.html` opens locally without console errors
 - [ ] All `img` / `a href` under `case-folder/` resolve (no 404)
-- [ ] `case-folder/beacon-geo-report/beacon-geo-example-report.pdf` opens from CTA
+- [ ] `case-folder/beacon-geo-report/beacon-geo-report-Sample-en.pdf` opens from CTA
 - [ ] EN/JP toggle on nav, Beacon, blogs, contact
 - [ ] `og:title`, `og:description`; `og:image` if file present
 - [ ] Mobile nav at 768px / 1024px (Beacon nav item not broken)
@@ -143,8 +143,8 @@ Must document:
 | Item | Value |
 |------|--------|
 | Source repo | `C:\dev\geo-monitoring-app` (or clone path) |
-| Source file | `outputs/GEO_Monitoring_Report_Sample_Anonymized.pdf` (verify path exists; if moved, update both repos' docs) |
-| Dest in HP repo | `case-folder/beacon-geo-report/beacon-geo-example-report.pdf` |
+| Source file | `case-folder/beacon-geo-report/beacon-geo-report-Sample-en.pdf` (verify path exists; if moved, update both repos' docs) |
+| Dest in HP repo | `case-folder/beacon-geo-report/beacon-geo-report-Sample-en.pdf` |
 | Trigger | New anonymized sample after product release |
 | Verification | Open secondary CTA on homepage in new tab |
 
@@ -180,7 +180,7 @@ Add § **Implementation record** at bottom of `beacon-geo-site-update-prd.md` (3
 │   └── create_beacon_geo_ads.py
 ├── case-folder/
 │   ├── beacon-geo-report/
-│   │   ├── beacon-geo-example-report.pdf
+│   │   ├── beacon-geo-report-Sample-en.pdf
 │   │   ├── beacon-geo-ad-01-keyword-map.png
 │   │   ├── beacon-geo-ad-02-ai-answer-capture.png
 │   │   ├── beacon-geo-ad-03-visibility-metrics.png
